@@ -21,7 +21,7 @@ export default function AppDownloadPage() {
       alert('Sigue las instrucciones en pantalla para instalar en tu iPhone.');
       return;
     }
-    
+
     const success = await promptInstall();
     if (!success) {
       alert('La instalación automática no está disponible o ya tienes la app instalada. Busca la opción "Agregar a la pantalla principal" en el menú de tu navegador.');
@@ -30,13 +30,13 @@ export default function AppDownloadPage() {
 
   return (
     <div className="min-h-screen bg-neutral-50 flex flex-col items-center py-12 px-4 relative overflow-hidden">
-      
+
       {/* Background Decor */}
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-[var(--color-primary)] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
       <div className="absolute top-[20%] right-[-10%] w-96 h-96 bg-sky-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
-      
+
       <div className="max-w-3xl w-full bg-white rounded-3xl shadow-xl overflow-hidden z-10">
-        
+
         <div className="bg-[var(--color-primary)] text-white text-center py-12 px-6 relative">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative z-10 flex flex-col items-center">
@@ -59,7 +59,7 @@ export default function AppDownloadPage() {
             </div>
           ) : (
             <div className="flex flex-col gap-12">
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-bold text-neutral-800 mb-4 flex items-center gap-2">
@@ -81,14 +81,14 @@ export default function AppDownloadPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100 flex flex-col justify-center items-center text-center h-full">
                   {isIOS ? (
                     <div className="flex flex-col items-center">
                       <Smartphone className="w-12 h-12 text-neutral-400 mb-4" />
                       <h4 className="font-bold text-lg text-neutral-800 mb-2">Instalar en iPhone</h4>
                       <p className="text-sm text-neutral-600 mb-6">Para instalar la app en tu dispositivo iOS, sigue estos dos sencillos pasos:</p>
-                      
+
                       <div className="flex flex-col gap-4 text-left w-full">
                         <div className="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm border">
                           <Share className="w-5 h-5 text-blue-500 shrink-0" />
@@ -104,8 +104,8 @@ export default function AppDownloadPage() {
                     <div className="flex flex-col items-center">
                       <Download className="w-12 h-12 text-[var(--color-primary)] mb-4" />
                       <h4 className="font-bold text-lg text-neutral-800 mb-2">Instalación automática</h4>
-                      <p className="text-sm text-neutral-600 mb-6">Haz clic en el botón de abajo para instalar la aplicación directamente en tu dispositivo Android o computadora.</p>
-                      <button 
+                      <p className="text-sm text-neutral-600 mb-6">Haz clic en el botón de abajo para instalar la aplicación directamente en tu dispositivo Android.</p>
+                      <button
                         onClick={handleInstallClick}
                         className="bg-[var(--color-primary)] hover:opacity-90 text-white font-bold py-3 px-8 rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
                       >
