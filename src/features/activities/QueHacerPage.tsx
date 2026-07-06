@@ -23,6 +23,9 @@ export default function QueHacerPage() {
 
   const filteredActivities = useMemo(() => {
     return activities.filter(activity => {
+      const locParam = searchParams.get('loc');
+      if (locParam && activity.location.toLowerCase() !== locParam.toLowerCase()) return false;
+
       const query = searchQuery.trim();
       if (!query) return true;
       

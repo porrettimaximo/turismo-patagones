@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight, Bed, Anchor } from 'lucide-react';
+import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight, Bed, Anchor, Map, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FolleteriaModal from '../../shared/FolleteriaModal';
 
@@ -96,19 +96,33 @@ export default function LosPocitosPage() {
             <h2 className="text-2xl font-bold">Información y Servicios</h2>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
-            <Link to="/info-viaje?q=alojamiento%20pocitos" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Link to="/info-viaje?loc=Los Pocitos&q=alojamiento" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Bed className="w-6 h-6" />
               </div>
               <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">¿Dónde dormir?</span>
             </Link>
             
-            <Link to="/que-hacer?q=embarcada%20pocitos" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+            <Link to="/info-viaje?loc=Los Pocitos&q=llegar" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+              <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
+                <Map className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Cómo llegar</span>
+            </Link>
+            
+            <Link to="/que-hacer?loc=Los Pocitos&q=embarcada" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Anchor className="w-6 h-6" />
               </div>
               <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Pesca Embarcada</span>
+            </Link>
+            
+            <Link to="/que-hacer?loc=Los Pocitos" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+              <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
+                <Calendar className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Qué hacer</span>
             </Link>
           </div>
         </div>

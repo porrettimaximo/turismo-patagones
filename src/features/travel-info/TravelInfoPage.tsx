@@ -17,6 +17,9 @@ export default function TravelInfoPage() {
 
   const filteredInfo = useMemo(() => {
     return travelInfo.filter(info => {
+      const locParam = searchParams.get('loc');
+      if (locParam && info.location.toLowerCase() !== locParam.toLowerCase()) return false;
+
       const query = searchQuery.trim();
       if (!query) return true;
 

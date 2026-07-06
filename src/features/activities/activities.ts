@@ -199,7 +199,7 @@ export const activities: Activity[] = [
   // BALNEARIO LOS POCITOS
   {
     id: 'pocitos-playa-naturaleza',
-    location: 'Balneario Los Pocitos',
+    location: 'Los Pocitos',
     title: 'Playa, descanso y naturaleza',
     description: 'Balneario Los Pocitos es una villa costera ideal para disfrutar de la tranquilidad, el descanso y el contacto con la naturaleza. Sus playas, marismas, humedales, canales y dunas conforman un paisaje característico de la costa atlántica del Partido de Patagones.\n\nEs un destino recomendado para familias, visitantes que buscan calma y quienes desean pasar unos días en un entorno natural, con ritmo tranquilo y ambiente de pueblo balneario.',
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
@@ -207,7 +207,7 @@ export const activities: Activity[] = [
   },
   {
     id: 'pocitos-camping',
-    location: 'Balneario Los Pocitos',
+    location: 'Los Pocitos',
     title: 'Camping y recreación al aire libre',
     description: 'Los Pocitos cuenta con espacios para disfrutar actividades al aire libre, descanso, caminatas y jornadas de playa. Su entorno natural permite vivir una experiencia sencilla, cercana y relajada, ideal para quienes buscan desconectarse de la rutina.\n\nDurante la temporada, el balneario recibe visitantes que llegan para acampar, compartir en familia, recorrer la costa y disfrutar del paisaje marítimo.',
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
@@ -215,7 +215,7 @@ export const activities: Activity[] = [
   },
   {
     id: 'pocitos-pesca-muelle',
-    location: 'Balneario Los Pocitos',
+    location: 'Los Pocitos',
     title: 'Pesca desde el muelle',
     description: 'La pesca es una de las actividades tradicionales de Los Pocitos. El muelle es uno de los espacios más elegidos por pescadores locales y visitantes, especialmente durante la temporada estival.\n\nLa localidad ofrece un entorno propicio para la pesca variada y deportiva, en un marco de tranquilidad y contacto directo con el ambiente costero.',
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
@@ -223,7 +223,7 @@ export const activities: Activity[] = [
   },
   {
     id: 'pocitos-ostras',
-    location: 'Balneario Los Pocitos',
+    location: 'Los Pocitos',
     title: 'Ostras y gastronomía marina',
     description: 'Los Pocitos se destaca por su vínculo con la producción ostrícola y la gastronomía marina. La ostra es uno de los símbolos de la localidad y forma parte de la identidad productiva y culinaria del balneario.\n\nQuienes visitan Los Pocitos pueden conocer una propuesta gastronómica asociada al mar, a la pesca artesanal y a los sabores característicos de la costa patagónica bonaerense.',
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
@@ -231,7 +231,7 @@ export const activities: Activity[] = [
   },
   {
     id: 'pocitos-fiesta-ostra',
-    location: 'Balneario Los Pocitos',
+    location: 'Los Pocitos',
     title: 'Fiesta Provincial de la Ostra',
     description: 'La Fiesta Provincial de la Ostra es uno de los eventos más representativos de Los Pocitos. Nacida en 2008, celebra la identidad productiva y gastronómica de la localidad.\n\nLa propuesta incluye degustación de platos elaborados con ostras, cena-baile, música y actividades populares. Es una celebración que reúne a vecinos, productores, visitantes y familias en torno a uno de los productos más característicos del balneario.',
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
@@ -239,7 +239,7 @@ export const activities: Activity[] = [
   },
   {
     id: 'pocitos-pesca-embarcada',
-    location: 'Balneario Los Pocitos',
+    location: 'Los Pocitos',
     title: 'Pesca embarcada',
     description: 'Además de la pesca de costa y muelle, Los Pocitos ofrece opciones para la pesca embarcada, ideal para quienes buscan una experiencia diferente y capturas de mayor tamaño en las aguas tranquilas de la bahía.\n\nEMBARCACIÓN BUENA VIDA II\n• Dirección: Los Delfines S/N\n• Tel: 15474498',
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com',
@@ -275,7 +275,7 @@ export const activities: Activity[] = [
   // SALINA DE PIEDRAS / CARDENAL CAGLIERO
   {
     id: 'salina-paisaje',
-    location: 'Salina de Piedras / Cardenal Cagliero',
+    location: 'Salina de Piedras',
     title: 'Paisaje salino y fotografía',
     description: 'La Salina de Piedras se encuentra a 12 kilómetros de Cardenal Cagliero y constituye uno de los paisajes más singulares del Partido de Patagones. Su entorno natural, sus tonalidades y su proceso de formación la convierten en un atractivo ideal para la fotografía, el turismo de naturaleza y los recorridos paisajísticos.\n\nDurante distintas épocas del año, la salina puede presentar cambios visuales notables, especialmente cuando el agua adquiere tonalidades rosadas por la presencia de algas y bacterias.',
     contact: 'Dirección de Turismo del Partido de Patagones: Mitre 84. Tel.: 02920-464819. Mail: turismopatagones@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
@@ -283,7 +283,7 @@ export const activities: Activity[] = [
   },
   {
     id: 'salina-proceso',
-    location: 'Salina de Piedras / Cardenal Cagliero',
+    location: 'Salina de Piedras',
     title: 'Proceso natural y cosecha de sal',
     description: 'La Salina de Piedras permite conocer un proceso natural y productivo característico de la región. Durante el invierno se llena de agua y acumula sal; en primavera la sal comienza a aflorar y, durante el verano, el agua se evapora hasta permitir la cosecha.\n\nLa sal extraída se utiliza con distintos fines industriales, lo que convierte al lugar en un atractivo de interés natural, productivo e histórico.',
     contact: 'Dirección de Turismo del Partido de Patagones: Mitre 84. Tel.: 02920-464819. Mail: turismopatagones@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
