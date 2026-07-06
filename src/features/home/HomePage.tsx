@@ -105,7 +105,7 @@ export default function HomePage() {
               {activeIndex === 1 ? (
                 <iframe 
                   className="w-full h-full pointer-events-auto"
-                  src="https://www.youtube.com/embed/GMo8ziLW934?si=Ac8biopXjl_JdHHV&autoplay=1&mute=1" 
+                  src="https://www.youtube.com/embed/GMo8ziLW934?si=Ac8biopXjl_JdHHV&autoplay=1" 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -136,7 +136,7 @@ export default function HomePage() {
               {activeIndex === 2 ? (
                 <iframe 
                   className="w-full h-full pointer-events-auto"
-                  src="https://www.youtube.com/embed/3nWseR35Eio?si=gFnNiC8KnUkeCVlU&autoplay=1&mute=1" 
+                  src="https://www.youtube.com/embed/3nWseR35Eio?si=gFnNiC8KnUkeCVlU&autoplay=1" 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -167,7 +167,7 @@ export default function HomePage() {
               {activeIndex === 3 ? (
                 <iframe 
                   className="w-full h-full pointer-events-auto"
-                  src="https://www.youtube.com/embed/gjBWxU1--1g?si=bb2R2WZVhSUNN-OJ&autoplay=1&mute=1" 
+                  src="https://www.youtube.com/embed/gjBWxU1--1g?si=bb2R2WZVhSUNN-OJ&autoplay=1" 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
