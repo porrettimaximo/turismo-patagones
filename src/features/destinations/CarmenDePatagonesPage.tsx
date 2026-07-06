@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight, Utensils, Bed, Store, Compass, Map, QrCode } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FolleteriaModal from '../../shared/FolleteriaModal';
+import ServiceModal from '../../shared/ServiceModal';
+import { carmenServices } from './carmenData';
 
 export default function CarmenDePatagonesPage() {
   const [isFolleteriaOpen, setIsFolleteriaOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<any>(null);
   const brochures = [
     { title: 'Plano de la ciudad', image: '/images/folleteria/carmen-de-patagones/plano-ciudad.pdf' },
     { title: 'Guía de servicios', image: '/images/folleteria/carmen-de-patagones/guia-servicios.pdf' },
@@ -144,9 +147,51 @@ export default function CarmenDePatagonesPage() {
           </div>
         </div>
 
+        {/* Servicios e Info Section */}
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-neutral-100 flex flex-col gap-6">
+          <div className="flex items-center gap-3 text-[var(--color-primary)] border-b pb-4">
+            <Info className="w-6 h-6" />
+            <h2 className="text-2xl font-bold">Información y Servicios</h2>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {Object.entries(carmenServices).map(([key, data]) => {
+              // Map icon string to actual Lucide component
+              const IconComponent = {
+                Utensils: Utensils,
+                Bed: Bed,
+                Store: Store,
+                Compass: Compass,
+                Map: Map,
+                QrCode: QrCode
+              }[data.icon] || Info;
+
+              return (
+                <button
+                  key={key}
+                  onClick={() => setSelectedService(data)}
+                  className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group"
+                >
+                  <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
+                    <IconComponent className="w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">
+                    {data.title}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
     
       <FolleteriaModal isOpen={isFolleteriaOpen} onClose={() => setIsFolleteriaOpen(false)} brochures={brochures} />
+      <ServiceModal 
+        isOpen={!!selectedService} 
+        onClose={() => setSelectedService(null)} 
+        data={selectedService} 
+      />
     </div>
   );
 }
