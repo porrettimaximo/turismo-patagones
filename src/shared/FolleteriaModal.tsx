@@ -1,5 +1,8 @@
 import { X, ChevronLeft, ChevronRight, FileImage, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export type Brochure = {
   title: string;
@@ -14,11 +17,13 @@ interface FolleteriaModalProps {
 
 export default function FolleteriaModal({ isOpen, onClose, brochures }: FolleteriaModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [numPages, setNumPages] = useState<number>(1);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       setCurrentIndex(0);
+      setNumPages(1);
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -29,8 +34,15 @@ export default function FolleteriaModal({ isOpen, onClose, brochures }: Folleter
 
   if (!isOpen) return null;
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % brochures.length);
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + brochures.length) % brochures.length);
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % brochures.length);
+    setNumPages(1);
+  };
+  
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + brochures.length) % brochures.length);
+    setNumPages(1);
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
@@ -71,13 +83,35 @@ export default function FolleteriaModal({ isOpen, onClose, brochures }: Folleter
                 </a>
               </div>
 
-              <div className="relative w-full flex-1 flex items-center justify-center min-h-[300px] py-4 pb-12">
+              <div className="relative w-full flex-1 flex flex-col items-center justify-start min-h-[300px] py-4 pb-12 overflow-y-auto max-h-[60vh] bg-neutral-200/50 rounded-lg">
                 {brochures[currentIndex].image.endsWith('.pdf') ? (
-                  <iframe 
-                    src={brochures[currentIndex].image}
-                    className="w-full h-[50vh] rounded shadow-md border-0"
-                    title={brochures[currentIndex].title}
-                  />
+                  <Document 
+                    file={brochures[currentIndex].image}
+                    loading={
+                      <div className="flex items-center justify-center p-8 text-neutral-500">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)] mr-3"></div>
+                        Cargando PDF...
+                      </div>
+                    }
+                    error={
+                      <div className="p-4 text-red-500 bg-red-50 rounded-lg border border-red-100">
+                        Error al cargar el PDF. Intenta descargarlo.
+                      </div>
+                    }
+                    className="flex flex-col items-center gap-4"
+                    onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                  >
+                    {Array.from(new Array(numPages), (el, index) => (
+                      <Page 
+                        key={`page_${index + 1}`} 
+                        pageNumber={index + 1} 
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                        className="shadow-md rounded overflow-hidden"
+                        width={Math.min(window.innerWidth * 0.8, 800)}
+                      />
+                    ))}
+                  </Document>
                 ) : (
                   <img 
                     src={brochures[currentIndex].image} 
@@ -119,7 +153,10 @@ export default function FolleteriaModal({ isOpen, onClose, brochures }: Folleter
             {brochures.map((b, idx) => (
               <button
                 key={idx}
-                onClick={() => setCurrentIndex(idx)}
+                onClick={() => {
+                  setCurrentIndex(idx);
+                  setNumPages(1);
+                }}
                 className={`relative w-20 h-16 flex-shrink-0 rounded overflow-hidden border-2 transition-all ${
                   currentIndex === idx ? 'border-[var(--color-primary)] opacity-100' : 'border-transparent opacity-50 hover:opacity-100'
                 }`}
