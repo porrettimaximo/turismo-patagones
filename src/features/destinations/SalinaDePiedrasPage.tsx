@@ -84,19 +84,12 @@ export default function SalinaDePiedrasPage() {
             <h2 className="text-2xl font-bold">Información de Viaje</h2>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <Link to="/info-viaje?loc=Salina de Piedras&q=llegar" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+          <div className="grid grid-cols-2 gap-4">
+            <Link to="/info-viaje?loc=Salina de Piedras" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
-                <Map className="w-6 h-6" />
+                <Info className="w-6 h-6" />
               </div>
-              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Cómo llegar</span>
-            </Link>
-            
-            <Link to="/info-viaje?loc=Salina de Piedras&q=recomendaciones" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
-              <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
-                <Compass className="w-6 h-6" />
-              </div>
-              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Recomendaciones</span>
+              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Información Local</span>
             </Link>
             
             <Link to="/que-hacer?loc=Salina de Piedras" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">

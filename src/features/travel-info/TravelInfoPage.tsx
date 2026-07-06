@@ -57,14 +57,18 @@ export default function TravelInfoPage() {
 
   // Expand all categories and info items that have search results when searching
   useEffect(() => {
+    const locParam = searchParams.get('loc');
     if (searchQuery.trim() !== '') {
       setExpandedCategories(Object.keys(groupedInfo));
       setExpandedInfos(filteredInfo.map(i => i.id));
+    } else if (locParam) {
+      setExpandedCategories(Object.keys(groupedInfo));
+      setExpandedInfos([]); // Keep info items closed initially
     } else {
       setExpandedCategories([]);
       setExpandedInfos([]);
     }
-  }, [searchQuery, groupedInfo, filteredInfo]);
+  }, [searchQuery, searchParams, groupedInfo, filteredInfo]);
 
   const toggleCategory = (location: string) => {
     setExpandedCategories(prev =>
@@ -105,7 +109,9 @@ export default function TravelInfoPage() {
       {/* Header and Search */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-4xl font-bold text-[var(--color-primary)] mb-2">Información de Viaje</h1>
+          <h1 className="text-4xl font-bold text-[var(--color-primary)] mb-2">
+            {searchParams.get('loc') ? `Información de tu viaje a ${searchParams.get('loc')}` : 'Información de Viaje'}
+          </h1>
           <p className="text-neutral-600">Todo lo que necesitas saber antes de tu viaje.</p>
         </div>
 
