@@ -40,7 +40,7 @@ export default function QueHacerPage() {
         normalizeText(activity.location).includes(word)
       );
     });
-  }, [searchQuery]);
+  }, [searchQuery, searchParams]);
 
   // Group activities by location
   const groupedActivities = useMemo(() => {
@@ -108,7 +108,9 @@ export default function QueHacerPage() {
       {/* Header and Search */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-4xl font-bold text-[var(--color-primary)] mb-2">¿Qué Hacer?</h1>
+          <h1 className="text-4xl font-bold text-[var(--color-primary)] mb-2">
+            {searchParams.get('loc') ? `¿Qué hacer en ${searchParams.get('loc')}?` : '¿Qué Hacer?'}
+          </h1>
           <p className="text-neutral-600">Descubre todas las actividades, historia y patrimonio que tenemos para ofrecer.</p>
         </div>
         

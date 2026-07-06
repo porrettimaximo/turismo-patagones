@@ -35,7 +35,7 @@ export default function TravelInfoPage() {
         normalizeText(info.category).includes(word)
       );
     });
-  }, [searchQuery]);
+  }, [searchQuery, searchParams]);
 
   // Group info by location
   const groupedInfo = useMemo(() => {
