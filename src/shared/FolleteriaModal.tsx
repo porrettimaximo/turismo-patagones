@@ -18,6 +18,7 @@ interface FolleteriaModalProps {
 export default function FolleteriaModal({ isOpen, onClose, brochures }: FolleteriaModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numPages, setNumPages] = useState<number>(1);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
@@ -86,6 +87,7 @@ export default function FolleteriaModal({ isOpen, onClose, brochures }: Folleter
               <div className="relative w-full flex-1 flex flex-col items-center justify-start min-h-[300px] py-4 pb-12 overflow-y-auto max-h-[60vh] bg-neutral-200/50 rounded-lg">
                 {brochures[currentIndex].image.endsWith('.pdf') ? (
                   <Document 
+                    key={`${brochures[currentIndex].image}_${retryCount}`}
                     file={brochures[currentIndex].image}
                     loading={
                       <div className="flex items-center justify-center p-8 text-neutral-500">
@@ -94,8 +96,25 @@ export default function FolleteriaModal({ isOpen, onClose, brochures }: Folleter
                       </div>
                     }
                     error={
-                      <div className="p-4 text-red-500 bg-red-50 rounded-lg border border-red-100">
-                        Error al cargar el PDF. Intenta descargarlo.
+                      <div className="p-4 flex flex-col gap-3 items-center text-red-500 bg-red-50 rounded-lg border border-red-100 text-center">
+                        <p className="font-medium">Hubo un problema al procesar el archivo.</p>
+                        <div className="flex gap-2">
+                          <button 
+                            onClick={() => setRetryCount(c => c + 1)}
+                            className="px-3 py-1.5 bg-red-100 hover:bg-red-200 rounded-md text-red-700 text-sm font-semibold transition-colors"
+                          >
+                            Reintentar
+                          </button>
+                          <a 
+                            href={brochures[currentIndex].image}
+                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1.5 bg-red-500 hover:bg-red-600 rounded-md text-white text-sm font-semibold transition-colors"
+                          >
+                            Descargar
+                          </a>
+                        </div>
                       </div>
                     }
                     className="flex flex-col items-center gap-4"
@@ -107,7 +126,7 @@ export default function FolleteriaModal({ isOpen, onClose, brochures }: Folleter
                         pageNumber={index + 1} 
                         renderTextLayer={false}
                         renderAnnotationLayer={false}
-                        className="shadow-md rounded overflow-hidden"
+                        className="shadow-md rounded overflow-hidden bg-white"
                         width={Math.min(window.innerWidth * 0.8, 800)}
                       />
                     ))}
