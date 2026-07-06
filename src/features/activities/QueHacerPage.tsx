@@ -1,10 +1,18 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { activities } from './activities';
 import { Search, MapPin, Navigation, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function QueHacerPage() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
+
+  // Update search query if URL changes
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q) setSearchQuery(q);
+  }, [searchParams]);
 
   // Extract unique locations for the navigation bar
   const locations = useMemo(() => {

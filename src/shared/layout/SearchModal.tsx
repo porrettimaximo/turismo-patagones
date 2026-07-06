@@ -25,20 +25,20 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [isOpen]);
 
   const searchData = [
-    { title: 'Carmen de Patagones', type: 'Destino', url: '/destinos#carmen-de-patagones', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Bahía San Blas', type: 'Destino', url: '/destinos#bahia-san-blas', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Los Pocitos', type: 'Destino', url: '/destinos#los-pocitos', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Villa 7 de Marzo', type: 'Destino', url: '/destinos#villa-7-de-marzo', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Stroeder', type: 'Destino', url: '/destinos#stroeder', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Villalonga', type: 'Destino', url: '/destinos#villalonga', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Salina de Piedras', type: 'Destino', url: '/destinos#salina-de-piedras', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Pesca Deportiva', type: 'Actividad', url: '/que-hacer', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Museos y Patrimonio', type: 'Actividad', url: '/que-hacer', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Playas y Balnearios', type: 'Actividad', url: '/que-hacer', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Termas', type: 'Actividad', url: '/que-hacer', icon: <Calendar className="w-5 h-5" /> },
+    { title: 'Carmen de Patagones', type: 'Destino', url: '/destinos/carmen-de-patagones', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Bahía San Blas', type: 'Destino', url: '/destinos/bahia-san-blas', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Los Pocitos', type: 'Destino', url: '/destinos/los-pocitos', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Villa 7 de Marzo', type: 'Destino', url: '/destinos/villa-7-de-marzo', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Stroeder', type: 'Destino', url: '/destinos/stroeder', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Villalonga', type: 'Destino', url: '/destinos/villalonga', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Salina de Piedras', type: 'Destino', url: '/destinos/salina-de-piedras', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Pesca Deportiva', type: 'Actividad', url: '/que-hacer?q=pesca', icon: <Calendar className="w-5 h-5" /> },
+    { title: 'Museos y Patrimonio', type: 'Actividad', url: '/que-hacer?q=museo', icon: <Calendar className="w-5 h-5" /> },
+    { title: 'Playas y Balnearios', type: 'Actividad', url: '/que-hacer?q=playa', icon: <Calendar className="w-5 h-5" /> },
+    { title: 'Termas', type: 'Actividad', url: '/que-hacer?q=termas', icon: <Calendar className="w-5 h-5" /> },
     { title: 'Información de Viaje', type: 'Info', url: '/info-viaje', icon: <Info className="w-5 h-5" /> },
-    { title: 'Alojamiento', type: 'Info', url: '/info-viaje', icon: <Info className="w-5 h-5" /> },
-    { title: 'Gastronomía', type: 'Info', url: '/info-viaje', icon: <Info className="w-5 h-5" /> },
+    { title: 'Alojamiento', type: 'Info', url: '/info-viaje?q=alojamiento', icon: <Info className="w-5 h-5" /> },
+    { title: 'Gastronomía', type: 'Info', url: '/info-viaje?q=gastronomia', icon: <Info className="w-5 h-5" /> },
     { title: 'Oficinas de Turismo', type: 'Contacto', url: '/contacto', icon: <Phone className="w-5 h-5" /> },
   ];
 
@@ -46,6 +46,17 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     item.title.toLowerCase().includes(query.toLowerCase()) || 
     item.type.toLowerCase().includes(query.toLowerCase())
   );
+
+  // Add a generic search in activities option if there's a query
+  const resultsWithGeneric = query.trim() ? [
+    ...filteredResults,
+    { 
+      title: `Buscar "${query}" en Actividades`, 
+      type: 'Búsqueda profunda', 
+      url: `/que-hacer?q=${encodeURIComponent(query)}`, 
+      icon: <Search className="w-5 h-5" /> 
+    }
+  ] : filteredResults;
 
   if (!isOpen) return null;
 
@@ -69,14 +80,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       {/* Results */}
       <div className="flex-1 overflow-y-auto p-4 max-w-3xl mx-auto w-full">
-        {query && filteredResults.length === 0 && (
+        {query && resultsWithGeneric.length === 0 && (
           <div className="text-center text-neutral-500 mt-12">
             No encontramos resultados para "{query}"
           </div>
         )}
 
         <div className="flex flex-col gap-2 mt-4">
-          {query && filteredResults.map((result, idx) => (
+          {query && resultsWithGeneric.map((result, idx) => (
             <button 
               key={idx}
               onClick={() => {
