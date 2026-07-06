@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Search, X, MapPin, Info, Phone, Calendar } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { travelInfo } from '../../features/travel-info/travelInfo';
+import { activities } from '../../features/activities/activities';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -25,34 +27,50 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [isOpen]);
 
   const searchData = [
-    { title: 'Carmen de Patagones', type: 'Destino', url: '/destinos/carmen-de-patagones', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Bahía San Blas', type: 'Destino', url: '/destinos/bahia-san-blas', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Los Pocitos', type: 'Destino', url: '/destinos/los-pocitos', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Villa 7 de Marzo', type: 'Destino', url: '/destinos/villa-7-de-marzo', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Stroeder', type: 'Destino', url: '/destinos/stroeder', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Villalonga', type: 'Destino', url: '/destinos/villalonga', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Salina de Piedras', type: 'Destino', url: '/destinos/salina-de-piedras', icon: <MapPin className="w-5 h-5" /> },
-    { title: 'Pesca Deportiva', type: 'Actividad', url: '/que-hacer?q=pesca', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Museos y Patrimonio', type: 'Actividad', url: '/que-hacer?q=museo', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Playas y Balnearios', type: 'Actividad', url: '/que-hacer?q=playa', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Termas', type: 'Actividad', url: '/que-hacer?q=termas', icon: <Calendar className="w-5 h-5" /> },
-    { title: 'Información de Viaje', type: 'Info', url: '/info-viaje', icon: <Info className="w-5 h-5" /> },
-    { title: 'Alojamiento', type: 'Info', url: '/info-viaje?q=alojamiento', icon: <Info className="w-5 h-5" /> },
-    { title: 'Gastronomía', type: 'Info', url: '/info-viaje?q=gastronomia', icon: <Info className="w-5 h-5" /> },
-    { title: 'Oficinas de Turismo', type: 'Contacto', url: '/contacto', icon: <Phone className="w-5 h-5" /> },
+    { title: 'Carmen de Patagones', type: 'Destino', description: '', url: '/destinos/carmen-de-patagones', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Bahía San Blas', type: 'Destino', description: '', url: '/destinos/bahia-san-blas', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Los Pocitos', type: 'Destino', description: '', url: '/destinos/los-pocitos', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Villa 7 de Marzo', type: 'Destino', description: '', url: '/destinos/villa-7-de-marzo', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Stroeder', type: 'Destino', description: '', url: '/destinos/stroeder', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Villalonga', type: 'Destino', description: '', url: '/destinos/villalonga', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Salina de Piedras', type: 'Destino', description: '', url: '/destinos/salina-de-piedras', icon: <MapPin className="w-5 h-5" /> },
+    { title: 'Oficinas de Turismo', type: 'Contacto', description: '', url: '/contacto', icon: <Phone className="w-5 h-5" /> },
+    
+    // Dynamic Travel Info
+    ...travelInfo.map(info => ({
+      title: info.title,
+      type: `Info de Viaje - ${info.location}`,
+      description: info.description,
+      url: `/info-viaje?q=${encodeURIComponent(info.title)}`,
+      icon: <Info className="w-5 h-5" />
+    })),
+
+    // Dynamic Activities
+    ...activities.map(act => ({
+      title: act.title,
+      type: `Qué Hacer - ${act.location}`,
+      description: act.description,
+      url: `/que-hacer?q=${encodeURIComponent(act.title)}`,
+      icon: <Calendar className="w-5 h-5" />
+    }))
   ];
 
-  const filteredResults = searchData.filter(item => 
-    item.title.toLowerCase().includes(query.toLowerCase()) || 
-    item.type.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredResults = searchData.filter(item => {
+    const q = query.toLowerCase();
+    return (
+      item.title.toLowerCase().includes(q) || 
+      item.type.toLowerCase().includes(q) ||
+      item.description.toLowerCase().includes(q)
+    );
+  }).slice(0, 15); // limit to 15 results for performance
 
   // Add a generic search in activities option if there's a query
   const resultsWithGeneric = query.trim() ? [
     ...filteredResults,
     { 
-      title: `Buscar "${query}" en Actividades`, 
-      type: 'Búsqueda profunda', 
+      title: `Ver todos los resultados para "${query}"`, 
+      type: 'Búsqueda Global', 
+      description: '',
       url: `/que-hacer?q=${encodeURIComponent(query)}`, 
       icon: <Search className="w-5 h-5" /> 
     }
