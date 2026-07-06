@@ -92,18 +92,19 @@ export default function HomePage() {
 
         {/* Slide 2: Experiencias */}
         <SwiperSlide>
-          <div className="w-full h-full flex flex-col justify-center items-center p-6 pb-32 md:pb-24 bg-black/40 backdrop-blur-sm">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg text-center max-w-4xl">
+          <div className="w-full h-full flex flex-col justify-center items-center p-4 md:p-6 bg-black/40 backdrop-blur-sm">
+            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 text-white drop-shadow-lg text-center max-w-4xl leading-tight">
               Un mundo de experiencias te esperan en Patagones
             </h2>
-            <p className="text-sm md:text-base max-w-3xl text-center mb-6 text-white drop-shadow-md">
-              Más de 160 km de costa marítima, uno de los ríos más caudalosos del país, el único Poblado Histórico de la Patagonia, deportes náuticos y la mejor pesca deportiva son solo algunas de las experiencias que te esperan en Patagones. Un destino que combina naturaleza, cultura y desconexión con la adrenalina.
+            <p className="text-sm md:text-base max-w-3xl text-center mb-4 md:mb-6 text-white drop-shadow-md px-2">
+              Más de 160 km de costa marítima, uno de los ríos más caudalosos del país, el único Poblado Histórico de la Patagonia.
+              <span className="hidden md:inline"> Un destino que combina naturaleza, cultura y desconexión con la adrenalina.</span>
             </p>
             
-            <div className="w-full max-w-md md:max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/50 border border-white/10">
+            <div className="w-full max-w-md md:max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/50 border border-white/10 pointer-events-none">
               {activeIndex === 1 ? (
                 <iframe 
-                  className="w-full h-full"
+                  className="w-full h-full pointer-events-auto"
                   src="https://www.youtube.com/embed/GMo8ziLW934?si=Ac8biopXjl_JdHHV&autoplay=1&mute=1" 
                   title="YouTube video player" 
                   frameBorder="0" 
@@ -112,7 +113,7 @@ export default function HomePage() {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center pointer-events-none">
                   <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
@@ -122,18 +123,19 @@ export default function HomePage() {
 
         {/* Slide 3: Playas y Verano */}
         <SwiperSlide>
-          <div className="w-full h-full flex flex-col justify-center items-center p-6 bg-black/60 backdrop-blur-sm">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg text-center max-w-4xl">
+          <div className="w-full h-full flex flex-col justify-center items-center p-4 md:p-6 bg-black/60 backdrop-blur-sm">
+            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 text-white drop-shadow-lg text-center max-w-4xl leading-tight">
               Este verano vivilo en nuestras playas
             </h2>
-            <p className="text-sm md:text-base max-w-3xl text-center mb-6 text-white drop-shadow-md">
-              Más de 160 kilómetros de costa marítima, 5 balnearios, uno de los ríos más caudalosos del país, deportes náuticos y la mejor pesca deportiva son solo algunas de las experiencias que te esperan en Patagones. ¡Te esperamos!
+            <p className="text-sm md:text-base max-w-3xl text-center mb-4 md:mb-6 text-white drop-shadow-md px-2">
+              Más de 160 kilómetros de costa marítima, 5 balnearios, y la mejor pesca deportiva te esperan en Patagones.
+              <span className="hidden md:inline"> ¡Te esperamos con las puertas abiertas!</span>
             </p>
             
-            <div className="w-full max-w-md md:max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/50 border border-white/10">
+            <div className="w-full max-w-md md:max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/50 border border-white/10 pointer-events-none">
               {activeIndex === 2 ? (
                 <iframe 
-                  className="w-full h-full"
+                  className="w-full h-full pointer-events-auto"
                   src="https://www.youtube.com/embed/3nWseR35Eio?si=gFnNiC8KnUkeCVlU&autoplay=1&mute=1" 
                   title="YouTube video player" 
                   frameBorder="0" 
@@ -142,7 +144,7 @@ export default function HomePage() {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center pointer-events-none">
                   <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
@@ -152,19 +154,19 @@ export default function HomePage() {
         
         {/* Slide 4: Bahía San Blas Pesca */}
         <SwiperSlide>
-          <div className="w-full h-full flex flex-col justify-center items-center p-6 pb-32 md:pb-24 bg-black/60 backdrop-blur-sm">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg text-center max-w-4xl">
+          <div className="w-full h-full flex flex-col justify-center items-center p-4 md:p-6 bg-black/60 backdrop-blur-sm">
+            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 text-white drop-shadow-lg text-center max-w-4xl leading-tight">
               ¿Por qué Bahía San Blas es el mejor pesquero deportivo de la región?
             </h2>
-            <p className="text-sm md:text-base max-w-3xl text-center mb-6 text-white drop-shadow-md">
-              La inmejorable riqueza ictícola y sus más de 30 Km. de franja costera permiten una experiencia de pesca insuperable.<br/>
-              Contamos con una oferta consolidada de casas de pesca, guías especializados, excursiones embarcadas y de costa, además de servicios de gastronomía, alojamiento, campings, estaciones de servicios, entre otras.
+            <p className="text-sm md:text-base max-w-3xl text-center mb-4 md:mb-6 text-white drop-shadow-md px-2">
+              La inmejorable riqueza ictícola y sus más de 30 Km. de franja costera permiten una experiencia de pesca insuperable.
+              <span className="hidden md:inline"><br/>Contamos con una oferta consolidada de casas de pesca, guías especializados, excursiones embarcadas y de costa, además de todos los servicios.</span>
             </p>
             
-            <div className="w-full max-w-md md:max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/50 border border-white/10">
+            <div className="w-full max-w-md md:max-w-lg aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/50 border border-white/10 pointer-events-none">
               {activeIndex === 3 ? (
                 <iframe 
-                  className="w-full h-full"
+                  className="w-full h-full pointer-events-auto"
                   src="https://www.youtube.com/embed/gjBWxU1--1g?si=bb2R2WZVhSUNN-OJ&autoplay=1&mute=1" 
                   title="YouTube video player" 
                   frameBorder="0" 
@@ -173,7 +175,7 @@ export default function HomePage() {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center pointer-events-none">
                   <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
@@ -183,15 +185,15 @@ export default function HomePage() {
 
         {/* Slide 5: Footer */}
         <SwiperSlide>
-          <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-black/90">
+          <div className="w-full h-full flex flex-col items-center justify-center p-4 md:p-6 bg-black/90">
             
-            <div className="flex flex-col items-center justify-center gap-8 w-full max-w-4xl flex-1 mt-12 md:mt-0">
+            <div className="flex flex-col items-center justify-center gap-6 md:gap-8 w-full max-w-4xl flex-1 mt-6 md:mt-0">
               
               {/* Big Logo */}
-              <img src="/logo.png" alt="Turismo Patagones" className="h-40 md:h-56 lg:h-72 object-contain opacity-90" />
+              <img src="/logo.png" alt="Turismo Patagones" className="h-32 md:h-56 lg:h-72 object-contain opacity-90" />
               
               {/* Social Networks + Buttons */}
-              <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
                 
                 {/* Social Networks */}
                 <div className="flex gap-4">
@@ -211,15 +213,15 @@ export default function HomePage() {
 
                 {/* Destinos and Contacto */}
                 <div className="flex gap-4">
-                  <Link to="/destinos" className="px-8 py-3 border border-white/30 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-md text-white font-medium">Destinos</Link>
-                  <Link to="/contacto" className="px-8 py-3 border border-white/30 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-md text-white font-medium">Contacto</Link>
+                  <Link to="/destinos" className="px-6 py-2 border border-white/30 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-md text-white font-medium text-sm md:text-base md:px-8 md:py-3">Destinos</Link>
+                  <Link to="/contacto" className="px-6 py-2 border border-white/30 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-md text-white font-medium text-sm md:text-base md:px-8 md:py-3">Contacto</Link>
                 </div>
 
               </div>
             </div>
             
             {/* Bottom: Copyright */}
-            <div className="mt-8 pb-24 md:pb-12">
+            <div className="mt-8 pb-8 md:pb-6">
               <p className="text-white/50 text-xs md:text-sm">© 2026 Turismo Partido de Patagones.</p>
             </div>
 
