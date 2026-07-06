@@ -69,16 +69,19 @@ Un slider vertical que repasa los atractivos generales (Naturaleza, Patrimonio, 
 ### Menu Rapido y Buscador Automatico
 Debajo del buscador, existen botones de acceso rapido. Al usarlos, la app te lleva a la seccion correcta y expande el acordeon correspondiente de forma automatica, ahorrando clics en el dispositivo.
 
-### Acordeones Dinamicos
-La informacion de "Que Hacer" e "Info de Viaje" esta colapsada por defecto para limpiar la pantalla. Se abre de manera dinamica segun las interacciones o consultas del usuario.
+### Accesos Unificados por Destino
+Para evitar la sobrecarga visual, los accesos desde cada destino se unificaron en botones principales como "Información Local" y "Actividades". Al presionarlos, la app redirige a la sección correspondiente abriendo de forma automática la categoría de la localidad seleccionada, manteniendo las opciones internas agrupadas para una navegación más limpia.
+
+### Acordeones Dinámicos
+La información de "Qué Hacer" e "Info de Viaje" está colapsada por defecto para limpiar la pantalla. Se abre de manera dinámica según las interacciones, los botones de acceso rápido o las consultas del usuario en el buscador.
 
 ### Visor de Folletería y Planos PDF Nativo
 Un modal dedicado (`FolleteriaModal`) que permite ver imágenes y flyers de actividades directamente dentro de la app con flechas de navegación. En lugar de forzar la descarga de archivos PDF o depender de iframes inconsistentes, la app utiliza **react-pdf** para renderizar los mapas y planos directamente en pantalla página por página, garantizando que todos los dispositivos móviles (Android/iOS) los visualicen sin salir de la plataforma.
 
-### Pantalla Dedicada de Instalación (PWA)
-En lugar de depender de banners invasivos, la aplicación cuenta con una ruta y pantalla dedicada (`/descargar-app`) accesible desde el menú principal. Esta pantalla no solo detalla los beneficios de instalar la App (Rápida, Offline, Siempre a mano), sino que además implementa una lógica inteligente:
-- Si el usuario accede desde **Android o PC**, se le presenta un botón que dispara el prompt nativo de instalación.
-- Si accede desde **iOS (iPhone/iPad)**, se le muestran instrucciones visuales personalizadas para agregar la web a la pantalla de inicio usando Safari.
+### Pantalla Dedicada y Botón de Instalación (PWA)
+Para fomentar la instalación de la aplicación, se implementaron dos estrategias:
+- **Botón Inteligente en Navegación:** Un botón "Descargar App" se muestra en la cabecera únicamente si el usuario está navegando desde un dispositivo móvil y aún no tiene la aplicación instalada (detectando el modo "standalone").
+- **Pantalla de Instalación (`/descargar-app`):** Accesible desde el menú principal. Si el usuario accede desde **Android o PC**, presenta un botón que dispara el prompt nativo de instalación. Si accede desde **iOS (iPhone/iPad)**, muestra instrucciones visuales personalizadas para agregar la web a la pantalla de inicio usando Safari.
 
 ---
 
