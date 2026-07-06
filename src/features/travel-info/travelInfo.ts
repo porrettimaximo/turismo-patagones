@@ -131,6 +131,13 @@ export const travelInfo: TravelInfo[] = [
 
   // VILLALONGA
   {
+    id: 'villalonga-donde-comer',
+    location: 'Villalonga',
+    title: '¿Dónde comer?',
+    description: 'LA CHIARA VILLALONGA (cafetería, heladería y buffet)\n• Dirección: 29 de Mayo y Julio A. Roca\n• Tel: 2914068389\n• Horarios: martes a jueves de 16:00 a 23:00 y viernes a domingos de 13:00 a 01:00 Hs.',
+    category: 'Gastronomía'
+  },
+  {
     id: 'villalonga-como-llegar',
     location: 'Villalonga',
     title: 'Cómo llegar',
