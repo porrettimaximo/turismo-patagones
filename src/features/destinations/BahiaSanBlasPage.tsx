@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight, Utensils, Bed, Store, Anchor, Map, Calendar } from 'lucide-react';
+import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight, Anchor, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FolleteriaModal from '../../shared/FolleteriaModal';
 
