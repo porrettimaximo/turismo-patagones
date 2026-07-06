@@ -4,52 +4,10 @@ import { useState, useEffect } from 'react';
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showInstallBtn, setShowInstallBtn] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-
   useEffect(() => {
-    // Detect mobile device
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    // Detect if app is installed (standalone mode)
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone);
-
-    if (isMobile && !isStandalone) {
-      setShowInstallBtn(true);
-    }
-
-    // PWA Install Prompt Listener
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
+    // Scroll to top on route change or when layout mounts
+    window.scrollTo(0, 0);
   }, []);
-
-  const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      // Android / Chrome: Show native prompt
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        setShowInstallBtn(false);
-      }
-      setDeferredPrompt(null);
-    } else {
-      // iOS / Safari Fallback (does not support beforeinstallprompt)
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-      if (isIOS) {
-        alert('Para instalar la app en tu iPhone:\n\n1. Toca el botón Compartir (el cuadrado con la flecha hacia arriba) en tu navegador.\n2. Desliza y selecciona "Agregar a la pantalla de inicio".');
-      } else {
-        alert('Para instalar la app:\n\nBusca la opción "Agregar a la pantalla principal" o "Instalar aplicación" en el menú de opciones (⋮) de tu navegador.');
-      }
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-neutral-50 text-neutral-900">
@@ -68,6 +26,9 @@ export default function Layout() {
             <Link to="/que-hacer" className="px-3 py-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300">¿Qué hacer?</Link>
             <Link to="/info-viaje" className="px-3 py-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300">Info de Viaje</Link>
             <Link to="/contacto" className="px-3 py-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300">Contacto</Link>
+            <Link to="/descargar-app" className="px-3 py-2 ml-2 bg-white/20 rounded-lg font-bold hover:bg-white/30 text-white hover:scale-105 transition-all duration-300 flex items-center gap-2">
+              <Download className="w-4 h-4" /> App
+            </Link>
 
             <div className="flex items-center gap-1 ml-2 border-l border-white/20 pl-4">
               <a href="https://www.facebook.com/TurismoPartidodePatagones/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-white/10 hover:text-sky-300 hover:scale-110 transition-all duration-300">
@@ -115,7 +76,10 @@ export default function Layout() {
             <Link to="/destinos" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>Destinos</Link>
             <Link to="/que-hacer" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>¿Qué hacer?</Link>
             <Link to="/info-viaje" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>Info de Viaje</Link>
-            <Link to="/contacto" className="p-4 hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>Contacto</Link>
+            <Link to="/contacto" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>Contacto</Link>
+            <Link to="/descargar-app" className="p-4 bg-[var(--color-primary)]/5 font-bold text-[var(--color-primary)] flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+              <Download className="w-5 h-5" /> Descargar App
+            </Link>
           </div>
         )}
       </nav>
@@ -124,26 +88,6 @@ export default function Layout() {
       <main className="flex-1 w-full pt-16">
         <Outlet />
       </main>
-
-      {/* App Download Banner for Mobile */}
-      {showInstallBtn && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-neutral-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="App Logo" className="w-10 h-10 rounded-xl shadow-sm" />
-            <div>
-              <p className="font-bold text-sm text-neutral-900">Turismo Patagones</p>
-              <p className="text-xs text-neutral-500">Descarga la app para tener toda la info a mano</p>
-            </div>
-          </div>
-          <button
-            className="bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all"
-            onClick={handleInstallClick}
-          >
-            <Download className="w-4 h-4" />
-            Instalar
-          </button>
-        </div>
-      )}
     </div>
   );
 }

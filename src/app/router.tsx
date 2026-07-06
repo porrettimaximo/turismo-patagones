@@ -12,6 +12,7 @@ import VillalongaPage from '../features/destinations/VillalongaPage';
 import QueHacerPage from '../features/activities/QueHacerPage';
 import TravelInfoPage from '../features/travel-info/TravelInfoPage';
 import ContactoPage from '../features/contact/ContactoPage';
+import AppDownloadPage from '../features/app-download/AppDownloadPage';
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: 'contacto',
         element: <ContactoPage />,
+      },
+      {
+        path: 'descargar-app',
+        element: <AppDownloadPage />,
       }
     ],
   },
