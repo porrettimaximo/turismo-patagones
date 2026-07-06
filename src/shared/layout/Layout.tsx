@@ -5,11 +5,16 @@ import { useState, useEffect } from 'react';
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     // Detect if app is installed (standalone mode)
     const standalone = window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone);
     setIsStandalone(standalone);
+
+    // Detect if the device is a mobile device
+    const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    setIsMobile(mobile);
 
     // Scroll to top on route change or when layout mounts
     window.scrollTo(0, 0);
@@ -32,7 +37,7 @@ export default function Layout() {
             <Link to="/que-hacer" className="px-3 py-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300">¿Qué hacer?</Link>
             <Link to="/info-viaje" className="px-3 py-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300">Info de Viaje</Link>
             <Link to="/contacto" className="px-3 py-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300">Contacto</Link>
-            {!isStandalone && (
+            {!isStandalone && isMobile && (
               <Link to="/descargar-app" className="px-3 py-2 ml-2 bg-white/20 rounded-lg font-bold hover:bg-white/30 text-white hover:scale-105 transition-all duration-300 flex items-center gap-2">
                 <Download className="w-4 h-4" /> App
               </Link>
@@ -85,7 +90,7 @@ export default function Layout() {
             <Link to="/que-hacer" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>¿Qué hacer?</Link>
             <Link to="/info-viaje" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>Info de Viaje</Link>
             <Link to="/contacto" className="p-4 border-b hover:bg-neutral-50" onClick={() => setMenuOpen(false)}>Contacto</Link>
-            {!isStandalone && (
+            {!isStandalone && isMobile && (
               <Link to="/descargar-app" className="p-4 bg-[var(--color-primary)]/5 font-bold text-[var(--color-primary)] flex items-center gap-2" onClick={() => setMenuOpen(false)}>
                 <Download className="w-5 h-5" /> Descargar App
               </Link>
