@@ -237,6 +237,14 @@ export const activities: Activity[] = [
     contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com\n\nOficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406. Mail: turismopatagones@gmail.com',
     contactLink: 'mailto:turismolospocitos@gmail.com'
   },
+  {
+    id: 'pocitos-pesca-embarcada',
+    location: 'Balneario Los Pocitos',
+    title: 'Pesca embarcada',
+    description: 'Además de la pesca de costa y muelle, Los Pocitos ofrece opciones para la pesca embarcada, ideal para quienes buscan una experiencia diferente y capturas de mayor tamaño en las aguas tranquilas de la bahía.\n\nEMBARCACIÓN BUENA VIDA II\n• Dirección: Los Delfines S/N\n• Tel: 15474498',
+    contact: 'Turismo Balneario Los Pocitos: Mail: turismolospocitos@gmail.com',
+    contactLink: 'mailto:turismolospocitos@gmail.com'
+  },
 
   // VILLA TURISTICA 7 DE MARZO
   {

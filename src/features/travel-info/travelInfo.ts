@@ -90,6 +90,13 @@ export const travelInfo: TravelInfo[] = [
 
   // LOS POCITOS
   {
+    id: 'pocitos-donde-dormir',
+    location: 'Los Pocitos',
+    title: '¿Dónde dormir?',
+    description: 'COMPLEJO LAS OSTRAS – Juan Ingelmo, entre las calles Los Caracoles y Los Delfines.\n• Tel: (011) 1561824552\n• E-mail: complejolasostras@hotmail.com\n\nEl Complejo Las Ostras ofrece departamentos de alquiler temporario para 2, 4 y hasta 12 personas totalmente equipados con ropa de cama, vajilla, freezer, tv satelital, aire acondicionado frio-calor, quincho con parrillas individuales, estacionamiento techado, mini pool, metegol, plaza de niños.',
+    category: 'Alojamiento'
+  },
+  {
     id: 'pocitos-como-llegar',
     location: 'Los Pocitos',
     title: 'Cómo llegar',

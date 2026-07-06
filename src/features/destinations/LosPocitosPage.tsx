@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, FileImage, Info, ArrowLeft, Video, ChevronLeft, ChevronRight, Bed, Anchor } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FolleteriaModal from '../../shared/FolleteriaModal';
 
@@ -86,6 +86,30 @@ export default function LosPocitosPage() {
             <p>
               Además del relax y la buena comida, las aguas del balneario son propicias para deportes náuticos tranquilos, kayak, paseos embarcados y, por supuesto, la infaltable pesca deportiva costera.
             </p>
+          </div>
+        </div>
+
+        {/* Servicios e Info Section */}
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-neutral-100 flex flex-col gap-6">
+          <div className="flex items-center gap-3 text-[var(--color-primary)] border-b pb-4">
+            <Info className="w-6 h-6" />
+            <h2 className="text-2xl font-bold">Información y Servicios</h2>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <Link to="/info-viaje?q=alojamiento" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+              <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
+                <Bed className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">¿Dónde dormir?</span>
+            </Link>
+            
+            <Link to="/que-hacer?q=embarcada" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+              <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
+                <Anchor className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Pesca Embarcada</span>
+            </Link>
           </div>
         </div>
 
