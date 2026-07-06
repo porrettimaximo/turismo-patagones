@@ -115,6 +115,13 @@ export const travelInfo: TravelInfo[] = [
 
   // STROEDER
   {
+    id: 'stroeder-donde-comer',
+    location: 'Stroeder',
+    title: '¿Dónde comer?',
+    description: 'KOWA CAFÉ BODEGÓN\n• Dirección: 25 de Mayo 522\n• Tel: 2920 – 15328307\n• Horarios: Martes a Domingos de 10:00 a 14:00 y de 17:00 a 00:00 Hs.',
+    category: 'Gastronomía'
+  },
+  {
     id: 'stroeder-como-llegar',
     location: 'Stroeder',
     title: 'Cómo llegar',
