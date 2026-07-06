@@ -66,14 +66,6 @@ export const activities: Activity[] = [
     contactLink: 'mailto:turismopatagones@gmail.com'
   },
   {
-    id: 'cdp-atractivos',
-    location: 'Carmen de Patagones',
-    title: 'Atractivos y QR (Descubrí Patagones)',
-    description: 'Para conocer todos los detalles, historia y puntos de interés de Carmen de Patagones de forma interactiva, hemos desarrollado una plataforma integral.\n\nVisita nuestro sistema de escaneo QR y recorridos virtuales en: turismo.patagones.gob.ar/qr',
-    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
-    contactLink: 'mailto:turismopatagones@gmail.com'
-  },
-  {
     id: 'cdp-muelle-nacional',
     location: 'Carmen de Patagones',
     title: 'Muelle Nacional',
@@ -175,7 +167,7 @@ export const activities: Activity[] = [
     id: 'bsb-excursiones-embarcada',
     location: 'Bahía San Blas',
     title: 'Excursiones de pesca embarcada',
-    description: 'Las excursiones de pesca embarcada son una de las experiencias más buscadas en Bahía San Blas. La actividad se realiza con prestadores y guías especializados, y permite acceder a distintos sectores de pesca según la época del año, las condiciones climáticas y las características del grupo.\n\nPara disfrutar una experiencia segura y organizada, se recomienda consultar previamente por prestadores habilitados, disponibilidad, horarios y condiciones de salida.',
+    description: 'Las excursiones de pesca embarcada son una de las experiencias más buscadas en Bahía San Blas. La actividad se realiza con prestadores y guías especializados, y permite acceder a distintos sectores de pesca según la época del año, las condiciones climáticas y las características del grupo.\n\nPara disfrutar una experiencia segura y organizada, se recomienda consultar previamente por prestadores habilitados, disponibilidad, horarios y condiciones de salida.\n\nEMBARCACIONES HABILITADAS:\n• KATALINA – Tel: 2920-663609\n• VALENTIA I – Tel: 2920-641793\n• BALDOMEROS – Tel: 11-3779-1494\n• CARRANZA PESCA Y TURISMO/ YAMILA Y TRITON – Tel: 2920-327528\n• N.F. PATAGONIA DE CARLOTO – Tel: 2920-385713\n• ANDREA G Y TIHAGO – Tel: 2920-557348\n• VICTORIA III – Tel: 2920-570428\n• TEHUELCHE II – Tel: 2920-557612\n• ANABELLA – Tel: 2920-477716\n• DON PEPE – Tel: 2920-305935\n• DON SEGUNDO – Tel: 2920-479034\n• PERLA NEGRA – Tel: 2920-559816\n• VICTORIA II – Tel: 11-33355218\n• LAI – Tel: 2920-329417\n• VIKINGO I – Tel: 2920-321699\n• TRAKALADA – Tel: 011-37589327\n• CAIMAN – Tel: 2920-570719\n• DON PEDRO – Tel: 11-40924977\n• FOCA, VALENTIA II – Tel: 291-05766959\n• EL PINGUINO / EL PINGUINO II – Tel: 2920-0372787',
     contact: 'Oficina de Informes Turísticos de Bahía San Blas: Av. Costanera entre calles 35 y 37. Tel.: 02920-15415753. Mail: turismobahiasanblas@yahoo.com.ar',
     contactLink: 'mailto:turismobahiasanblas@yahoo.com.ar'
   },
