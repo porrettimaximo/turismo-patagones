@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showInstallBtn, setShowInstallBtn] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
     // Detect mobile device
@@ -16,7 +17,39 @@ export default function Layout() {
     if (isMobile && !isStandalone) {
       setShowInstallBtn(true);
     }
+
+    // PWA Install Prompt Listener
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      // Android / Chrome: Show native prompt
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setShowInstallBtn(false);
+      }
+      setDeferredPrompt(null);
+    } else {
+      // iOS / Safari Fallback (does not support beforeinstallprompt)
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+      if (isIOS) {
+        alert('Para instalar la app en tu iPhone:\n\n1. Toca el botón Compartir (el cuadrado con la flecha hacia arriba) en tu navegador.\n2. Desliza y selecciona "Agregar a la pantalla de inicio".');
+      } else {
+        alert('Para instalar la app:\n\nBusca la opción "Agregar a la pantalla principal" o "Instalar aplicación" en el menú de opciones (⋮) de tu navegador.');
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-neutral-50 text-neutral-900">
@@ -104,7 +137,7 @@ export default function Layout() {
           </div>
           <button
             className="bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all"
-            onClick={() => alert('Iniciar descarga de la App...')}
+            onClick={handleInstallClick}
           >
             <Download className="w-4 h-4" />
             Instalar
