@@ -22,11 +22,12 @@ El ecosistema de desarrollo fue elegido priorizando velocidad, peso ligero y mod
 - **TypeScript:** Agrega tipado estatico, reduciendo errores en tiempo de ejecucion y mejorando la autocompletacion y mantenibilidad del codigo.
 - **Vite (v8):** Empaquetador y servidor de desarrollo extremadamente rapido enfocado en un inicio casi instantaneo del entorno de trabajo.
 
-### Diseno y Estilos
+### Diseño y Estilos
 - **Tailwind CSS (v4):** Framework de utilidades CSS integrado directamente en el compilador de Vite. Permite construir la interfaz de manera agil sin salir del archivo TSX.
 - **Lucide React:** Biblioteca de iconos limpios, ligeros y escalables en formato SVG.
 - **Framer Motion:** Manejo de animaciones complejas (como la aparicion progresiva de textos en la home y los modales).
 - **Swiper:** El motor detras del carrusel vertical (Vertical Slide) a pantalla completa de la pantalla de inicio.
+- **React PDF:** Renderizado nativo de documentos PDF (planos y mapas) directamente en canvas, evitando el uso de iframes inconsistentes.
 
 ### Geolocalizacion y Mapas
 - **Leaflet & React Leaflet (v5):** Libreria de JavaScript de codigo abierto para mapas interactivos compatibles con dispositivos moviles, adaptado a componentes React para renderizar coordenadas y puntos de interes del municipio.
@@ -71,11 +72,13 @@ Debajo del buscador, existen botones de acceso rapido. Al usarlos, la app te lle
 ### Acordeones Dinamicos
 La informacion de "Que Hacer" e "Info de Viaje" esta colapsada por defecto para limpiar la pantalla. Se abre de manera dinamica segun las interacciones o consultas del usuario.
 
-### Visor de Folleteria Integrado
-Un modal dedicado (FolleteriaModal) que permite ver imagenes y flyers de actividades directamente dentro de la app con flechas de navegacion, evitando que el usuario deba salir a Google Drive o descargar archivos pesados solo para leerlos.
+### Visor de Folletería y Planos PDF Nativo
+Un modal dedicado (`FolleteriaModal`) que permite ver imágenes y flyers de actividades directamente dentro de la app con flechas de navegación. En lugar de forzar la descarga de archivos PDF o depender de iframes inconsistentes, la app utiliza **react-pdf** para renderizar los mapas y planos directamente en pantalla página por página, garantizando que todos los dispositivos móviles (Android/iOS) los visualicen sin salir de la plataforma.
 
-### Banner de Descarga Movil Condicional
-En el layout principal se ejecuta una logica en tiempo de ejecucion que detecta si el usuario esta visitando la aplicacion desde un dispositivo movil (a traves del userAgent) y valida si la aplicacion NO esta instalada (es decir, que no este corriendo bajo el modo standalone de PWA). Si se cumplen las condiciones, se renderiza un banner persistente en la parte inferior invitando a instalar la app de Turismo. Si el usuario ya inicio la app desde su version instalada (PWA), el banner se mantiene oculto para maximizar el area visual disponible.
+### Pantalla Dedicada de Instalación (PWA)
+En lugar de depender de banners invasivos, la aplicación cuenta con una ruta y pantalla dedicada (`/descargar-app`) accesible desde el menú principal. Esta pantalla no solo detalla los beneficios de instalar la App (Rápida, Offline, Siempre a mano), sino que además implementa una lógica inteligente:
+- Si el usuario accede desde **Android o PC**, se le presenta un botón que dispara el prompt nativo de instalación.
+- Si accede desde **iOS (iPhone/iPad)**, se le muestran instrucciones visuales personalizadas para agregar la web a la pantalla de inicio usando Safari.
 
 ---
 
