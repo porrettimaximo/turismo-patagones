@@ -20,7 +20,7 @@ export default function HomePage() {
           playsInline 
           className="absolute inset-0 w-full h-full object-cover saturate-[0.7] contrast-75 brightness-95"
         >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          <source src="/videos/hero-bg.webm" type="video/webm" />
         </video>
         {/* Efecto nublado/neblina: capa gris azulada sutil con un mínimo desenfoque */}
         <div className="absolute inset-0 bg-slate-400/20 backdrop-blur-[2px]"></div>
