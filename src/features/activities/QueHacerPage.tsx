@@ -11,8 +11,7 @@ export default function QueHacerPage() {
 
   // Update search query if URL changes
   useEffect(() => {
-    const q = searchParams.get('q');
-    if (q) setSearchQuery(q);
+    setSearchQuery(searchParams.get('q') || '');
   }, [searchParams]);
 
   // Extract unique locations for the navigation bar

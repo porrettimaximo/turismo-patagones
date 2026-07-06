@@ -9,6 +9,11 @@ export default function TravelInfoPage() {
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
   const [expandedInfos, setExpandedInfos] = useState<string[]>([]);
 
+  // Update search query if URL changes
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
+
   // Extract unique locations for the navigation bar
   const locations = useMemo(() => {
     const locs = new Set(travelInfo.map(info => info.location));
