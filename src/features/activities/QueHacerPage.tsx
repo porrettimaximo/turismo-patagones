@@ -26,10 +26,11 @@ export default function QueHacerPage() {
       const query = searchQuery.toLowerCase().trim();
       if (!query) return true;
       
-      return (
-        activity.title.toLowerCase().includes(query) ||
-        activity.description.toLowerCase().includes(query) ||
-        activity.location.toLowerCase().includes(query)
+      const words = query.split(/\s+/);
+      return words.every(word =>
+        activity.title.toLowerCase().includes(word) ||
+        activity.description.toLowerCase().includes(word) ||
+        activity.location.toLowerCase().includes(word)
       );
     });
   }, [searchQuery]);

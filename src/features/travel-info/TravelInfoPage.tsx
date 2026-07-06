@@ -20,11 +20,12 @@ export default function TravelInfoPage() {
       const query = searchQuery.toLowerCase().trim();
       if (!query) return true;
 
-      return (
-        info.title.toLowerCase().includes(query) ||
-        info.description.toLowerCase().includes(query) ||
-        info.location.toLowerCase().includes(query) ||
-        info.category.toLowerCase().includes(query)
+      const words = query.split(/\s+/);
+      return words.every(word =>
+        info.title.toLowerCase().includes(word) ||
+        info.description.toLowerCase().includes(word) ||
+        info.location.toLowerCase().includes(word) ||
+        info.category.toLowerCase().includes(word)
       );
     });
   }, [searchQuery]);
