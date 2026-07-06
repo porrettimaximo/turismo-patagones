@@ -1,11 +1,13 @@
 import { Link, Outlet } from 'react-router-dom';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import SearchModal from './SearchModal';
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     // Detect if app is installed (standalone mode)
@@ -43,6 +45,13 @@ export default function Layout() {
               </Link>
             )}
 
+            <button 
+              onClick={() => setSearchOpen(true)}
+              className="px-3 py-2 ml-2 rounded-lg font-medium hover:bg-white/10 hover:text-sky-300 hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+
             <div className="flex items-center gap-1 ml-2 border-l border-white/20 pl-4">
               <a href="https://www.facebook.com/TurismoPartidodePatagones/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-white/10 hover:text-sky-300 hover:scale-110 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
@@ -56,8 +65,13 @@ export default function Layout() {
             </div>
           </div>
 
-          {/* Mobile Menu Button & Socials */}
           <div className="md:hidden flex items-center gap-4">
+            <button 
+              onClick={() => setSearchOpen(true)}
+              className="p-2 text-white hover:text-sky-300 transition-colors"
+            >
+              <Search className="w-6 h-6" />
+            </button>
             <div className="flex items-center gap-3">
               <a href="https://www.facebook.com/TurismoPartidodePatagones/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-neutral-200 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
@@ -103,6 +117,8 @@ export default function Layout() {
       <main className="flex-1 w-full pt-16">
         <Outlet />
       </main>
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }
