@@ -39,8 +39,8 @@ export default function BahiaSanBlasPage() {
               Bahía San Blas
             </h1>
             <p className="text-xl text-white/90 flex items-center gap-2">
-                <MapPin className="w-5 h-5" /> El Paraíso del Pescador
-              </p>
+              <MapPin className="w-5 h-5" /> El Paraíso del Pescador
+            </p>
           </div>
         </div>
       </div>
@@ -56,14 +56,14 @@ export default function BahiaSanBlasPage() {
               <h2 className="text-2xl font-bold">Acerca del destino</h2>
             </div>
             <div className="flex gap-2 items-center flex-wrap">
-              <button 
+              <button
                 onClick={() => setIsFolleteriaOpen(true)}
                 className="inline-flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 px-4 py-2 rounded-full transition-colors text-sm font-medium w-fit whitespace-nowrap"
               >
                 <FileImage className="w-4 h-4" />
                 Folletería
               </button>
-              <a 
+              <a
                 href="https://www.google.com/maps/search/?api=1&query=Bahia+San+Blas+Buenos+Aires"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -97,30 +97,30 @@ export default function BahiaSanBlasPage() {
             <Info className="w-6 h-6" />
             <h2 className="text-2xl font-bold">Información y Servicios</h2>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link to="/info-viaje?q=alojamiento%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+            <Link to="/info-viaje?q=alojamiento%20bahia%20san%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Bed className="w-6 h-6" />
               </div>
               <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">¿Dónde dormir?</span>
             </Link>
 
-            <Link to="/info-viaje?q=gastronomía%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+            <Link to="/info-viaje?q=gastronomía%20bahia%20san%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Utensils className="w-6 h-6" />
               </div>
               <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">¿Dónde comer?</span>
             </Link>
-            
-            <Link to="/info-viaje?q=comercios%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+
+            <Link to="/info-viaje?q=comercios%20bahia%20san%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Store className="w-6 h-6" />
               </div>
               <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Comercios</span>
             </Link>
-            
-            <Link to="/que-hacer?q=embarcada%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
+
+            <Link to="/que-hacer?q=embarcada%20bahia%20san%20blas" className="flex flex-col items-center justify-center gap-3 p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-orange-50 hover:border-orange-200 hover:text-[var(--color-tertiary)] transition-all group">
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Anchor className="w-6 h-6" />
               </div>
@@ -152,28 +152,27 @@ export default function BahiaSanBlasPage() {
 
             {/* Controles del carrusel */}
             <div className="flex items-center justify-between mt-4">
-              <button 
+              <button
                 onClick={prevVideo}
                 className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition-colors flex items-center justify-center"
                 aria-label="Video anterior"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
-              
+
               <div className="flex gap-2">
                 {videos.map((_, idx) => (
-                  <button 
+                  <button
                     key={idx}
                     onClick={() => setCurrentVideo(idx)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      currentVideo === idx ? 'bg-[var(--color-primary)]' : 'bg-neutral-300 hover:bg-neutral-400'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${currentVideo === idx ? 'bg-[var(--color-primary)]' : 'bg-neutral-300 hover:bg-neutral-400'
+                      }`}
                     aria-label={`Ir al video ${idx + 1}`}
                   />
                 ))}
               </div>
 
-              <button 
+              <button
                 onClick={nextVideo}
                 className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition-colors flex items-center justify-center"
                 aria-label="Siguiente video"
@@ -185,7 +184,7 @@ export default function BahiaSanBlasPage() {
         </div>
 
       </div>
-    
+
       <FolleteriaModal isOpen={isFolleteriaOpen} onClose={() => setIsFolleteriaOpen(false)} brochures={brochures} />
     </div>
   );

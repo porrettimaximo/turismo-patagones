@@ -17,15 +17,19 @@ export default function TravelInfoPage() {
 
   const filteredInfo = useMemo(() => {
     return travelInfo.filter(info => {
-      const query = searchQuery.toLowerCase().trim();
+      const query = searchQuery.trim();
       if (!query) return true;
 
-      const words = query.split(/\s+/);
+      const normalizeText = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      
+      const normalizedQuery = normalizeText(query);
+      const words = normalizedQuery.split(/\s+/);
+      
       return words.every(word =>
-        info.title.toLowerCase().includes(word) ||
-        info.description.toLowerCase().includes(word) ||
-        info.location.toLowerCase().includes(word) ||
-        info.category.toLowerCase().includes(word)
+        normalizeText(info.title).includes(word) ||
+        normalizeText(info.description).includes(word) ||
+        normalizeText(info.location).includes(word) ||
+        normalizeText(info.category).includes(word)
       );
     });
   }, [searchQuery]);

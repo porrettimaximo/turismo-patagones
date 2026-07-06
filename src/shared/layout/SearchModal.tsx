@@ -56,11 +56,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   ];
 
   const filteredResults = searchData.filter(item => {
-    const q = query.toLowerCase();
-    return (
-      item.title.toLowerCase().includes(q) || 
-      item.type.toLowerCase().includes(q) ||
-      item.description.toLowerCase().includes(q)
+    if (!query.trim()) return true;
+    
+    const normalizeText = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const normalizedQuery = normalizeText(query.trim());
+    const words = normalizedQuery.split(/\s+/);
+    
+    return words.every(word =>
+      normalizeText(item.title).includes(word) || 
+      normalizeText(item.type).includes(word) ||
+      normalizeText(item.description).includes(word)
     );
   }).slice(0, 15); // limit to 15 results for performance
 

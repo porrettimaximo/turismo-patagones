@@ -23,14 +23,18 @@ export default function QueHacerPage() {
 
   const filteredActivities = useMemo(() => {
     return activities.filter(activity => {
-      const query = searchQuery.toLowerCase().trim();
+      const query = searchQuery.trim();
       if (!query) return true;
       
-      const words = query.split(/\s+/);
+      const normalizeText = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      
+      const normalizedQuery = normalizeText(query);
+      const words = normalizedQuery.split(/\s+/);
+      
       return words.every(word =>
-        activity.title.toLowerCase().includes(word) ||
-        activity.description.toLowerCase().includes(word) ||
-        activity.location.toLowerCase().includes(word)
+        normalizeText(activity.title).includes(word) ||
+        normalizeText(activity.description).includes(word) ||
+        normalizeText(activity.location).includes(word)
       );
     });
   }, [searchQuery]);
