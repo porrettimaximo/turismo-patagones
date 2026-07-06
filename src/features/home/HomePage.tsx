@@ -220,8 +220,9 @@ export default function HomePage() {
               </div>
             </div>
             
-            {/* Bottom: Copyright */}
-            <div className="mt-8 pb-8 md:pb-6">
+            {/* Bottom: Copyright & Disclaimer */}
+            <div className="mt-8 pb-8 md:pb-6 flex flex-col items-center gap-2 text-center">
+              <p className="text-white/70 font-semibold text-sm md:text-base bg-white/10 px-4 py-2 rounded-lg border border-white/20">Prototipo no oficial de modernización turística</p>
               <p className="text-white/50 text-xs md:text-sm">© 2026 Turismo Partido de Patagones.</p>
             </div>
 
