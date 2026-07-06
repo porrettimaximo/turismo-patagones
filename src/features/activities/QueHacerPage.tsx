@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { activities } from './activities';
-import { Search, MapPin, Navigation, Info, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, MapPin, Navigation, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function QueHacerPage() {
   const [searchParams] = useSearchParams();
@@ -54,16 +54,20 @@ export default function QueHacerPage() {
     return groups;
   }, [filteredActivities]);
 
-  // Expand all categories and activities when searching
+  // Expand categories and activities
   useEffect(() => {
+    const locParam = searchParams.get('loc');
     if (searchQuery.trim() !== '') {
       setExpandedCategories(Object.keys(groupedActivities));
       setExpandedActivities(filteredActivities.map(a => a.id));
+    } else if (locParam) {
+      setExpandedCategories(Object.keys(groupedActivities));
+      setExpandedActivities([]); // Keep activities closed initially
     } else {
       setExpandedCategories([]);
       setExpandedActivities([]);
     }
-  }, [searchQuery, groupedActivities, filteredActivities]);
+  }, [searchQuery, searchParams, groupedActivities, filteredActivities]);
 
   const toggleCategory = (location: string) => {
     setExpandedCategories(prev => 

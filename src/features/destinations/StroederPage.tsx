@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, FileImage, Info, ArrowLeft, Video, Utensils, Map } from 'lucide-react';
+import { MapPin, FileImage, Info, ArrowLeft, Video, Utensils, Map, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FolleteriaModal from '../../shared/FolleteriaModal';
 
@@ -103,7 +103,7 @@ export default function StroederPage() {
               <div className="p-3 bg-white rounded-full shadow-sm text-[var(--color-primary)] group-hover:text-[var(--color-tertiary)] transition-colors">
                 <Calendar className="w-6 h-6" />
               </div>
-              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Qué hacer</span>
+              <span className="font-bold text-neutral-700 group-hover:text-[var(--color-tertiary)] text-center text-sm md:text-base">Actividades</span>
             </Link>
           </div>
         </div>

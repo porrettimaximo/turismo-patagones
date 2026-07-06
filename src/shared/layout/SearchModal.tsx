@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Search, X, MapPin, Info, Phone, Calendar } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { travelInfo } from '../../features/travel-info/travelInfo';
 import { activities } from '../../features/activities/activities';
 
