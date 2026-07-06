@@ -73,6 +73,94 @@ export const activities: Activity[] = [
     contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
     contactLink: 'mailto:turismopatagones@gmail.com'
   },
+  {
+    id: 'cdp-muelle-nacional',
+    location: 'Carmen de Patagones',
+    title: 'Muelle Nacional',
+    description: '¿Te imaginas caminar sobre un muelle con más de dos siglos de historia? Inaugurado en 1810, el Muelle Nacional fue el corazón comercial de la Patagonia. Hoy, completamente renovado y con su pasarela flotante, es el lugar perfecto para contemplar el río, sacar fotos increíbles y conectar con la época dorada de Carmen de Patagones.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-pasaje-sanjose',
+    location: 'Carmen de Patagones',
+    title: 'Pasaje San José de Mayo',
+    description: 'Siente la magia del Poblado Histórico bajando por la pintoresca escalinata del Pasaje San José de Mayo. Lo que en el siglo XIX era una simple barranca, hoy es un hermoso paseo peatonal adornado con cañones antiguos, desde donde tendrás las vistas más encantadoras del río Negro y las callecitas de la ciudad.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-torre-fuerte',
+    location: 'Carmen de Patagones',
+    title: 'Torre del Fuerte',
+    description: 'Un verdadero símbolo de soberanía. Construida en 1780 como atalaya y campanario, la Torre del Fuerte fue testigo de épicas batallas y revoluciones. Ingresa para descubrir su antigua escalera de caracol y revive la historia del fuerte que dio origen a la ciudad. ¡Una parada obligatoria para los amantes de la historia!',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-barrio-tambor',
+    location: 'Carmen de Patagones',
+    title: 'Barrio del Tambor',
+    description: 'Conoce las raíces afro-argentinas de la ciudad en el Barrio del Tambor. Habitado en 1850 por africanos llegados tras la guerra con el Imperio del Brasil, este rincón histórico aún conserva en la costa del río los piletones originales donde lavaban la ropa. Un paseo emocionante para descubrir una parte fundamental y viva de nuestra cultura.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-cerro-caballada',
+    location: 'Carmen de Patagones',
+    title: 'Cerro de la Caballada',
+    description: '¡El mirador perfecto de la comarca! A solo 1 km del centro, este cerro no solo ofrece la mejor vista panorámica, sino que es escenario de una de las victorias más heroicas de Argentina: el combate del 7 de marzo de 1827 contra el Imperio del Brasil. Sube a disfrutar del paisaje y respira el valor de nuestros héroes en este Monumento Histórico Nacional.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-parque-piedrabuena',
+    location: 'Carmen de Patagones',
+    title: 'Parque Piedra Buena',
+    description: 'Descubre el lugar donde nació y creció Luis Piedra Buena, nuestro gran defensor de la soberanía austral. Aunque el río se llevó su casa original en 1899, este sitio es hoy un hermoso parque y un Monumento Histórico Nacional que rinde homenaje a su legendaria vida dedicada al mar y a la Patria.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-rancho-rial',
+    location: 'Carmen de Patagones',
+    title: 'Rancho Rial (Ranchos Coloniales)',
+    description: 'Viaja en el tiempo visitando el hogar del primer alcalde de Patagones y héroe de 1827. Esta típica casa colonial te asombrará con sus paredes de adobe, techo de tejas y un misterioso altillo secreto usado para esconderse en caso de ataque. ¡Un rincón donde el mismísimo Bartolomé Mitre jugaba de niño!',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-rancho-tahona',
+    location: 'Carmen de Patagones',
+    title: 'Rancho La Tahona',
+    description: 'Descubre la auténtica arquitectura de hace dos siglos en este rancho donado por un defensor de 1827. Sus paredes de barro, tirantes marcados a hacha y varas de mimbre te transportarán al pasado. Su antiguo molino de trigo (tahona) sirvió para sostener la primera escuela pública de la zona. ¡Un paseo lleno de encanto y tradición!',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-rancho-carlota',
+    location: 'Carmen de Patagones',
+    title: 'Rancho La Carlota',
+    description: 'Siente la paz de la época colonial en La Carlota, un rancho de 1800 maravillosamente restaurado por los vecinos. Recorre su sala, dormitorio y cocina de época, y déjate atrapar por el aroma a malvón y cedrón en su hermoso patio enrejado. Una joya arquitectónica imperdible, anexa al Museo Regional.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-iglesia-parroquial',
+    location: 'Carmen de Patagones',
+    title: 'Iglesia Parroquial Nuestra Señora del Carmen',
+    description: 'Visita la iglesia más antigua de la Patagonia (iniciada en 1780) y el corazón espiritual de la ciudad. En su interior te esperan tesoros invaluables, como las históricas banderas imperiales brasileñas capturadas en la heroica Batalla de 1827, y el mausoleo del legendario Comandante Luis Piedra Buena. ¡Una obra arquitectónica majestuosa cargada de gloria nacional!',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-cuevas-maragatas',
+    location: 'Carmen de Patagones',
+    title: 'Cuevas Maragatas - Laguna Grande',
+    description: '¿Te imaginas vivir dentro de la montaña? Explora las místicas Cuevas Maragatas, el refugio cavado a pico en los barrancos donde se instalaron los primeros pobladores en el siglo XVIII. A 7 km del centro, este paraje fascinante y Sitio Histórico te conecta de forma única con el esfuerzo y la valentía de los fundadores de la Patagonia.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
 
   // BAHIA SAN BLAS
   {
