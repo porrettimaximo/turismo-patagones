@@ -124,7 +124,7 @@ export default function TravelInfoPage() {
       </div>
 
       {/* Town Navigation Links */}
-      {locations.length > 0 && !searchQuery && (
+      {locations.length > 0 && !searchQuery && !searchParams.get('loc') && (
         <div className="flex flex-wrap gap-2 mb-12">
           {locations.map(location => (
             <button
