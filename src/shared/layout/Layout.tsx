@@ -19,10 +19,12 @@ export default function Layout() {
     // Detect if the device is a mobile device
     const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     setIsMobile(mobile);
-
-    // Scroll to top on route change or when layout mounts
-    window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="flex flex-col min-h-screen bg-neutral-50 text-neutral-900">
