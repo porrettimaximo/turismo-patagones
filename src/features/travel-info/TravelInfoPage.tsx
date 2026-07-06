@@ -1,10 +1,13 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { travelInfo } from './travelInfo';
 import { Search, MapPin, Navigation, Info, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function TravelInfoPage() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
+  const [expandedInfos, setExpandedInfos] = useState<string[]>([]);
 
   // Extract unique locations for the navigation bar
   const locations = useMemo(() => {
@@ -38,20 +41,36 @@ export default function TravelInfoPage() {
     return groups;
   }, [filteredInfo]);
 
-  // Expand all categories that have search results when searching
+  // Update search query if URL changes
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q) setSearchQuery(q);
+  }, [searchParams]);
+
+  // Expand all categories and info items that have search results when searching
   useEffect(() => {
     if (searchQuery.trim() !== '') {
       setExpandedCategories(Object.keys(groupedInfo));
+      setExpandedInfos(filteredInfo.map(i => i.id));
     } else {
       setExpandedCategories([]);
+      setExpandedInfos([]);
     }
-  }, [searchQuery, groupedInfo]);
+  }, [searchQuery, groupedInfo, filteredInfo]);
 
   const toggleCategory = (location: string) => {
     setExpandedCategories(prev =>
       prev.includes(location)
         ? prev.filter(c => c !== location)
         : [...prev, location]
+    );
+  };
+
+  const toggleInfo = (id: string) => {
+    setExpandedInfos(prev =>
+      prev.includes(id)
+        ? prev.filter(i => i !== id)
+        : [...prev, id]
     );
   };
 
@@ -135,39 +154,68 @@ export default function TravelInfoPage() {
                         {location}
                       </h2>
                     </div>
-                    {isExpanded ? (
-                      <ChevronUp className="w-6 h-6 text-neutral-500 flex-shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-6 h-6 text-neutral-500 flex-shrink-0" />
-                    )}
+                    <div className="p-2 bg-neutral-100 rounded-full text-[var(--color-primary)] transition-transform duration-300">
+                      {isExpanded ? (
+                        <ChevronUp className="w-5 h-5" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      )}
+                    </div>
                   </button>
 
                   {/* Accordion Content */}
-                  {isExpanded && (
+                  <div 
+                    className={`transition-all duration-300 ease-in-out ${
+                      isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                    }`}
+                  >
                     <div className="p-6 md:p-8 pt-0 border-t border-neutral-100">
-                      <div className="space-y-8 pt-6">
-                        {locInfos.map((info, idx) => (
-                          <div key={info.id} className={idx !== 0 ? "pt-8 border-t border-neutral-100" : ""}>
-                            <div className="mb-4">
-                              <span className={`inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider mb-3 px-3 py-1.5 rounded-md ${info.category === 'Cómo Llegar' ? 'bg-blue-50 text-blue-700' : 'bg-orange-50 text-[var(--color-tertiary)]'}`}>
-                                <Info className="w-4 h-4" />
-                                {info.category}
-                              </span>
-                              <h3 className="text-2xl font-bold text-neutral-800 leading-tight">
-                                {info.title}
-                              </h3>
-                            </div>
+                      <div className="space-y-4 pt-6">
+                        {locInfos.map((info) => {
+                          const isInfoExpanded = expandedInfos.includes(info.id);
+                          return (
+                            <div key={info.id} className="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50">
+                              <button 
+                                onClick={() => toggleInfo(info.id)}
+                                className="w-full flex items-center justify-between p-4 hover:bg-neutral-100 transition-colors text-left"
+                              >
+                                <div>
+                                  <span className={`inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider mb-2 px-2 py-1 rounded-md ${info.category === 'Cómo Llegar' ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-[var(--color-tertiary)]'}`}>
+                                    <Info className="w-3.5 h-3.5" />
+                                    {info.category}
+                                  </span>
+                                  <h3 className="text-xl font-bold text-neutral-800 leading-tight">
+                                    {info.title}
+                                  </h3>
+                                </div>
+                                <div className="p-2 bg-white rounded-full text-neutral-500 shadow-sm transition-transform duration-300 ml-4 flex-shrink-0">
+                                  {isInfoExpanded ? (
+                                    <ChevronUp className="w-5 h-5" />
+                                  ) : (
+                                    <ChevronDown className="w-5 h-5" />
+                                  )}
+                                </div>
+                              </button>
 
-                            <div className="text-neutral-600 text-base leading-relaxed max-w-4xl">
-                              {info.description.split('\n').map((paragraph, pIdx) => (
-                                paragraph.trim() ? <p key={pIdx} className="mb-3 last:mb-0">{paragraph}</p> : null
-                              ))}
+                              <div 
+                                className={`transition-all duration-300 ease-in-out bg-white ${
+                                  isInfoExpanded ? 'max-h-[2000px] opacity-100 border-t border-neutral-200' : 'max-h-0 opacity-0 overflow-hidden'
+                                }`}
+                              >
+                                <div className="p-6">
+                                  <div className="text-neutral-600 text-base leading-relaxed">
+                                    {info.description.split('\n').map((paragraph, pIdx) => (
+                                      paragraph.trim() ? <p key={pIdx} className="mb-3 last:mb-0">{paragraph}</p> : null
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               </section>
             );
