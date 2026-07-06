@@ -3,11 +3,32 @@ export type TravelInfo = {
   location: string;
   title: string;
   description: string;
-  category: 'Cómo Llegar' | 'Consejos de Viaje';
+  category: string;
 };
 
 export const travelInfo: TravelInfo[] = [
   // CARMEN DE PATAGONES
+  {
+    id: 'cdp-donde-comer',
+    location: 'Carmen de Patagones',
+    title: '¿Dónde comer?',
+    description: 'RESTAURANTES\n• RESTAURANTE Y PARRILLA REGGIANI – Bynon 422. – Tel: 2920 461065\n• RESTAURANTE Y PARRILLA CLÁSICO PATAGÓNICO – Comodoro Rivadavia 310\n• RESTAURANTE “VERONA” – Dr. Baraja 328. – Tel: 2920 1530487\n• CONFITERIA Y RESTAURANT CLUB HOUSE. Club de Golf (Cerro de la Caballada) Tel: 2920607529\n• PIANTAO RESTÓ – Esq. Comodoro Rivadavia y España. – Tel: 15291012\n• LA CASONA – Harosteguy 137. – Tel: 15472537\n\nCAFETERÍAS\n• CONFITERIA CLUB DE GOLF LA «COMARCA» – Acceso Doña Cata Villarino. – Tel: 15607532\n• CONFITERÍA FIORE – J.J Biedma 18.\n• CAFÉ GREEN – Olivera 55. -Tel: 15302039\n\nPIZZERÍAS\n• PIZZERÍA SAN MARZANO – 25 de Mayo 344. – Tel: 15362009\n• PIZZERÍA BARROCO – Irigoyen 60. – Tel: 15287387\n\nRESTO BAR\n• HAMBURGUESERIA TEHOA – Suipacha 71. – Tel: 2920271149\n• HOMOSAPIENS – Bvd. Moreno y San Martín .- Tel: 15417631\n• SIN EL MAPA – Bynon y Harosteguy. – Tel:15621627\n• GEN 369 – Dr. Baraja 318.- Tel: 15410586\n• PARADOR NAÚTICO – Av. Costanera – Tel: 15515161\n\nFOOD TRUCKS\n• LA COMARCA – Tel: 15288842\n• SABORES AL RUEDO – 1º bajada – Tel: 15607228\n• LAS TINAS – Plaza Villarino -Tel: 15404878\n• CARRITO LULU – Plaza Villarino -Tel: 15464771\n• MR. LOMMO – C. Rivadavia e Irigoyen – Tel: 15577200\n• FRESCO Y NATURAL – Náutico Piedra Buena – Tel: 15265138\n• PIZZA MADRE – Mitre 347 – Tel: 15209706\n• ENTRE PUENTES FOOD TRUCK – POCREAR – J. Newberry- Tel: 15593766\n• ADONAI CASERITOS – Juan de la Piedra 88 – Tel: 15206987\n• EL ENCUENTRO – Francisco de Viedma (Escuela de Canotaje) – Tel: 15344311\n• PIEDAS CLEMETINA – Francisco de Viedma – Tel: 15484511\n• COSTUMBRES ARGENTINAS – Francisco de Viedma 51 – Tel: 15515956\n• ROMA\'S FOOD TRUCK – Puente Ferrocarretero – Tel: 15205337\n• EL CAPITAN – San Lorenzo 88. – Tel: 15413034\n• CHEERS – Francisco de Viedma 13 – Tel: 2920484585\n• LO DE MARQUITO – Juan de la Piedra 88 -Tel: 15552130\n\nROTISERÍAS\n• GRACIELA – M. Fagnano y España – Tel: 2920 463944\n• UNICOOP– España 203. Tel: 2920 461303\n• CAMPOLLO – Zambonini y San Lorenzo – Tel: 2920 216133\n• DALUCA – Irigoyen e/ Buenos Aires y 25 de Mayo – Tel: 2920 15495610\n• DON VICENTE – Olivera 65 – Tel: 2920 463500\n• VENITE AL HUMO – Bertorello 256\n• EL BAÑADO – Colon 267 – Tel 2920461566\n• IN SITU- San Lorenzo 30 – Tel 2920373073\n• PRONTO + (MÁS) – Irigoyen 554. – Tel: 2920200765\n• IL FRATELLI – Bynon 478 – Tel 2920698111\n• ROTISERÍA UNICOOP – España 143 – Tel: 15461748\n\nHELADERÍAS\n• SEI TU – C. Rivadavia esq. Alsina\n• BAJO CERO – Olivera 31\n• GÉNOVA – Bynon 430\n• HELADERÍA JAUJA – Alsina 80\n• GRIDO – Comodoro Rivadavia 373\n• FIORE – J.J Biedma 18',
+    category: 'Gastronomía'
+  },
+  {
+    id: 'cdp-donde-dormir',
+    location: 'Carmen de Patagones',
+    title: '¿Dónde dormir?',
+    description: 'ALOJAMIENTOS\n• CASA CRESPO HOTEL – Mitre 114 - Tel: (02920) 15321258\n• HOTEL REGGIANI - Bynon 422 – Tel: 2920 – 461065 / 15518638\n• APART MARAGATO - Italia 486. - Tel: 2920629283\n• COMPLEJO PATAGONIA - 25 de mayo 233. - Tel: 2920 15446987\n• ARMONY - Paulino Rojas 62. - Tel: 2920 15417863',
+    category: 'Alojamiento'
+  },
+  {
+    id: 'cdp-comercios',
+    location: 'Carmen de Patagones',
+    title: 'Comercios y Servicios Útiles',
+    description: 'SUPERMERCADOS\n• UNICOOP – España 143. – Tel: 461748\n• LA ÁNONIMA – San Lorenzo 59. – Tel: 463840 / Av. J. Domingo Perón 280. – Tel: 461747\n\nESTACIONES DE SERVICIOS\n• AXION SERVICENTRO DEL CARMEN – Comodoro Rivadavia 315. – Tel: 461660\n• PUMA – Juan de la Piedra y Dr. Baraja 19.\n• YPF SERVICLUB (GNC) – Bernal e H. Irigoyen\n\nGOMERÍAS\n• GOMERÍA ANDRÉS CONTRERAS – Celedonio Miguel 274. – Tel: 15213888\n• GOMERIA GH – Av. Juan Domingo Perón 402. – Tel: 15615205\n• NEUMÁTICOS CAMPISI – J. Lavalle 436. – Tel: 465497\n\nBANCOS\n• NACIÓN ARGENTINA (RED LINK) – Paraguay 2. – Tel: 461075 / 461756\n• PROVINCIA DE BS AS (Sistema BAPRO) – Alsina 50.- Tel: 461070 / 462626\n• PATAGONIA (BANELCO) – Calles Bynon y Arozteguy.\n\nTAXI\n• TAXI CAR – Dr. Baraja 360 – Tel: 463250 / 461322\n• TAXI PATAGONES – Comodoro Rivadavia 229 – Tel: 462111 / 464000\n• TAXI 7 DE MARZO – Irigoyen 46 – Tel: 463580/463080\n\nTRANSFERS Y TRANSPORTE\n• EJE SUR Mini bus – Tel: 15489579\n• AVIS Y ANDES RENT A CAR – Tel: 15662956\n• BOOM TURISMO Mini bus – Tel: 15696806\n• VIEDMA TRANSFER – Tel: 15477214\n• TRANSPORTE MUNICIPAL (SAN BLAS) – Terminal de ómnibus, Antonio Barbieri 165.\n\nAGENCIAS DE VIAJES Y TURISMO\n• ENTRE PUENTES VIAJES – Tel: 15356518\n• CUM LAUDE – VIAJES – España 32 - Tel: 15365857\n• ESTACIÓN UNO VIAJES – C. Rivadavia 378 - Tel: 15366682\n• AGENCIA PRIMERA ESCALA – Esq. Suipacha y 25 de Mayo - Tel: 15327688\n\nPRODUCTOS REGIONALES\n• MARROQUINERÍA «CASCO VIEJO» – Comodoro Rivadavia 238. – Tel: 463353\n• CASA «CEVARAZ» – Comodoro Rivadavia 235 – Tel: 15639085\n• NAKEL REGIONALES – DR. Baraja 289 – Tel: 15662023',
+    category: 'Comercios y Servicios'
+  },
   {
     id: 'cdp-como-llegar-auto',
     location: 'Carmen de Patagones',

@@ -49,6 +49,30 @@ export const activities: Activity[] = [
     contact: 'Dirección de Turismo del Partido de Patagones: Mitre 84. Tel.: 02920-464819. Mail: turismopatagones@gmail.com',
     contactLink: 'mailto:turismopatagones@gmail.com'
   },
+  {
+    id: 'cdp-excursiones',
+    location: 'Carmen de Patagones',
+    title: 'Excursiones',
+    description: 'CLUB NÁUTICO L. PIEDRA BUENA\nConsultas por ingreso: 02920 15513904\nHorarios de atención: Lunes a viernes 13:30 a 17:00 hs – Sábados: 9:00 a 12:30 hs\n• KAYAK-SUP-DRAGONBOAT – Tel: 2920-271720\n• ALQUILER DE EMBARCACIONES -Tel: 2920470700\n• SALIDAS A REMAR – Tel: 2920-413691 / 2920-305493\n\nCLUB DE GOLF LA COMARCA\nA 1 km del sector céntrico de Carmen de Patagones\nAlquiler de equipos, clases particulares y grupales, restaurant.\nAbierto todos los días de 09:00 a 19:00 Hs – Tel: 02920-15607532\n\nMIRADORES DEL CERRO (Caballada)\n• Mirador 1: Curso fluvial del Rio Negro, Puente ferrocarretero.\n• Mirador 2: Panorámica de la Comarca, Elevación de la barda, Monte nativo.\n\nVUELOS DE BAUTISMO\nSalida: Aeropuerto Gobernador Edgardo Castello – Viedma.\nConsultas y reservas: 15614968',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-circuitos',
+    location: 'Carmen de Patagones',
+    title: 'Circuitos Guiados',
+    description: 'POBLADO HISTÓRICO (Todo el año)\n• Visitas guiadas de 1 hora y media aprox.\n• Punto de encuentro: Museo Regional Emma Nozzi (J.J Biedma Nº64).\n• Actividad coordinada por guías especializados con relatos históricos y leyendas.\n• ¡Entrada libre y gratuita!\n\nTEMPORADA ESTIVAL (Verano)\n• Visitas guiadas diarias de 1 hora y media.\n• Punto de encuentro: Oficina en el Muelle Nacional.\n• Recorrido por construcciones emblemáticas, anécdotas y patrimonio.',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
+  {
+    id: 'cdp-atractivos',
+    location: 'Carmen de Patagones',
+    title: 'Atractivos y QR (Descubrí Patagones)',
+    description: 'Para conocer todos los detalles, historia y puntos de interés de Carmen de Patagones de forma interactiva, hemos desarrollado una plataforma integral.\n\nVisita nuestro sistema de escaneo QR y recorridos virtuales en: turismo.patagones.gob.ar/qr',
+    contact: 'Oficina de Informes Turísticos de Carmen de Patagones: Tel.: 02920-465406',
+    contactLink: 'mailto:turismopatagones@gmail.com'
+  },
 
   // BAHIA SAN BLAS
   {
