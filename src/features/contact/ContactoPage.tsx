@@ -37,17 +37,17 @@ export default function ContactoPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-6">Contactos</h1>
-        <p className="text-lg text-neutral-600 leading-relaxed mb-6">
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+        <h1 className="text-3xl md:text-5xl font-bold text-[var(--color-primary)] mb-4 md:mb-6">Contactos</h1>
+        <p className="text-base md:text-lg text-neutral-600 leading-relaxed mb-6">
           La Dirección de Turismo Municipal cuenta con un área técnica emplazada en pleno poblado histórico de Carmen de Patagones y dos oficinas de información turística. En ellas se encuentra todo el material e información disponible para evacuar cualquier tipo de dudas respecto a los servicios, atractivos, horarios, tarifas, medios de transporte, alojamiento, entre otros.
         </p>
-        <div className="bg-orange-50 border border-orange-100 rounded-2xl p-6 text-left shadow-sm inline-block">
-          <div className="flex items-start gap-4">
-            <div className="bg-white p-3 rounded-full shadow-sm shrink-0">
-              <Info className="w-6 h-6 text-[var(--color-tertiary)]" />
+        <div className="bg-orange-50 border border-orange-100 rounded-2xl p-4 md:p-6 text-left shadow-sm inline-block">
+          <div className="flex flex-col sm:flex-row items-start gap-3 md:gap-4">
+            <div className="bg-white p-2 md:p-3 rounded-full shadow-sm shrink-0">
+              <Info className="w-5 h-5 md:w-6 md:h-6 text-[var(--color-tertiary)]" />
             </div>
             <p className="text-sm text-neutral-700 leading-relaxed">
               Si está planificando su visita a Patagones le recomendamos previamente tomar contacto con nuestros informantes para que puedan asesorarlos efectivamente, asegurando así una mejor experiencia de viaje.<br/><br/>
@@ -58,10 +58,10 @@ export default function ContactoPage() {
       </div>
 
       {/* Offices Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {offices.map((office) => (
-          <div key={office.id} className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-200 hover:shadow-md transition-shadow">
-            <h2 className="text-2xl font-bold text-[var(--color-primary)] mb-6">{office.title}</h2>
+          <div key={office.id} className="bg-white rounded-2xl p-5 md:p-8 shadow-sm border border-neutral-200 hover:shadow-md transition-shadow">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-primary)] mb-4 md:mb-6">{office.title}</h2>
             
             <div className="space-y-4">
               {office.address && (
