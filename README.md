@@ -1,5 +1,6 @@
 # Documentacion General del Proyecto: Turismo Patagones
 
+Prototipo no oficial de modernización turística
 ## 1. Vision del Producto y Experiencia de Usuario (UX)
 
 La aplicacion Turismo Patagones fue concebida con el objetivo de modernizar la presencia digital del destino, transformando una web institucional tradicional en una experiencia inmersiva y de vanguardia (App-like experience).
