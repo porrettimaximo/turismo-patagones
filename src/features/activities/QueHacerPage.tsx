@@ -1,12 +1,13 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { activities } from './activities';
-import { Search, MapPin, Navigation, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, MapPin, Navigation, Info, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function QueHacerPage() {
   const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
+  const [expandedActivities, setExpandedActivities] = useState<string[]>([]);
 
   // Update search query if URL changes
   useEffect(() => {
@@ -45,18 +46,30 @@ export default function QueHacerPage() {
     return groups;
   }, [filteredActivities]);
 
-  // Expand all categories when searching
+  // Expand all categories and activities when searching
   useEffect(() => {
-    if (searchQuery.trim()) {
+    if (searchQuery.trim() !== '') {
       setExpandedCategories(Object.keys(groupedActivities));
+      setExpandedActivities(filteredActivities.map(a => a.id));
+    } else {
+      setExpandedCategories([]);
+      setExpandedActivities([]);
     }
-  }, [searchQuery, groupedActivities]);
+  }, [searchQuery, groupedActivities, filteredActivities]);
 
   const toggleCategory = (location: string) => {
     setExpandedCategories(prev => 
       prev.includes(location) 
         ? prev.filter(cat => cat !== location)
         : [...prev, location]
+    );
+  };
+
+  const toggleActivity = (id: string) => {
+    setExpandedActivities(prev =>
+      prev.includes(id)
+        ? prev.filter(a => a !== id)
+        : [...prev, id]
     );
   };
 
@@ -119,92 +132,122 @@ export default function QueHacerPage() {
       
       {/* Grouped Activities */}
       {Object.keys(groupedActivities).length > 0 ? (
-        <div className="space-y-12">
-          {Object.entries(groupedActivities).map(([location, locActivities]) => (
-            <section 
-              key={location} 
-              id={location.replace(/[\s/]/g, '-').toLowerCase()}
-              className="scroll-mt-24 border border-neutral-200 rounded-2xl bg-white shadow-sm overflow-hidden"
-            >
-              <button 
-                onClick={() => toggleCategory(location)}
-                className="w-full flex items-center justify-between p-6 hover:bg-neutral-50 transition-colors text-left"
+        <div className="space-y-6">
+          {Object.entries(groupedActivities).map(([location, locActivities]) => {
+            const isExpanded = expandedCategories.includes(location);
+            return (
+              <section 
+                key={location} 
+                id={location.replace(/[\s/]/g, '-').toLowerCase()}
+                className="scroll-mt-24"
               >
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-6 h-6 text-[var(--color-tertiary)]" />
-                  <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)]">
-                    {location}
-                  </h2>
-                </div>
-                <div className="p-2 bg-neutral-100 rounded-full text-[var(--color-primary)] transition-transform duration-300">
-                  {expandedCategories.includes(location) ? (
-                    <ChevronUp className="w-5 h-5" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5" />
-                  )}
-                </div>
-              </button>
-              
-              <div 
-                className={`transition-all duration-300 ease-in-out ${
-                  expandedCategories.includes(location) ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-                }`}
-              >
-                <div className="p-6 pt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {locActivities.map(activity => (
-                      <div key={activity.id} className="bg-neutral-50 rounded-xl shadow-sm border border-neutral-200 hover:shadow-md transition-shadow flex flex-col p-6">
-                        <div className="mb-4">
-                          <h3 className="text-xl font-bold text-neutral-800 leading-tight">
-                            {activity.title}
-                          </h3>
-                        </div>
-                        
-                        <div className="text-neutral-600 mb-2 flex-1 text-sm leading-relaxed">
-                          {activity.description.split('\n').map((paragraph, idx) => (
-                            paragraph.trim() ? <p key={idx} className="mb-2 last:mb-0">{paragraph}</p> : null
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
+                  {/* Accordion Header */}
+                  <button 
+                    onClick={() => toggleCategory(location)}
+                    className="w-full flex items-center justify-between p-6 md:p-8 hover:bg-neutral-50 transition-colors text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <MapPin className="w-6 h-6 text-[var(--color-tertiary)]" />
+                      <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)]">
+                        {location}
+                      </h2>
+                    </div>
+                    <div className="p-2 bg-neutral-100 rounded-full text-[var(--color-primary)] transition-transform duration-300 flex-shrink-0">
+                      {isExpanded ? (
+                        <ChevronUp className="w-5 h-5" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      )}
+                    </div>
+                  </button>
                   
-                  {/* Contact Card for the Location */}
-                  {(() => {
-                    // Collect unique contact lines for the location
-                    const contactLines = new Set<string>();
-                    locActivities.forEach(act => {
-                      if (act.contact) {
-                        act.contact.split('\n').forEach(line => {
-                          if (line.trim()) contactLines.add(line.trim());
-                        });
-                      }
-                    });
-                    const uniqueContacts = Array.from(contactLines);
+                  {/* Accordion Content */}
+                  <div 
+                    className={`transition-all duration-300 ease-in-out ${
+                      isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                    }`}
+                  >
+                    <div className="p-6 md:p-8 pt-0 border-t border-neutral-100">
+                      <div className="space-y-4 pt-6">
+                        {locActivities.map(activity => {
+                          const isActivityExpanded = expandedActivities.includes(activity.id);
+                          return (
+                            <div key={activity.id} className="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50">
+                              <button 
+                                onClick={() => toggleActivity(activity.id)}
+                                className="w-full flex items-center justify-between p-4 hover:bg-neutral-100 transition-colors text-left"
+                              >
+                                <div>
+                                  <h3 className="text-xl font-bold text-neutral-800 leading-tight">
+                                    {activity.title}
+                                  </h3>
+                                </div>
+                                <div className="p-2 bg-white rounded-full text-neutral-500 shadow-sm transition-transform duration-300 ml-4 flex-shrink-0">
+                                  {isActivityExpanded ? (
+                                    <ChevronUp className="w-5 h-5" />
+                                  ) : (
+                                    <ChevronDown className="w-5 h-5" />
+                                  )}
+                                </div>
+                              </button>
 
-                    if (uniqueContacts.length > 0) {
-                      return (
-                        <div className="mt-8 bg-orange-50 border border-orange-100 rounded-xl p-6 shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
-                          <div className="bg-white p-3 rounded-full shadow-sm">
-                            <MapPin className="w-6 h-6 text-[var(--color-tertiary)]" />
-                          </div>
-                          <div>
-                            <h4 className="text-lg font-bold text-[var(--color-primary)] mb-2">Contacto / Información de {location}</h4>
-                            <div className="text-sm text-neutral-700 leading-relaxed space-y-1">
-                              {uniqueContacts.map((contact, idx) => (
-                                <p key={idx}>{contact}</p>
-                              ))}
+                              <div 
+                                className={`transition-all duration-300 ease-in-out bg-white ${
+                                  isActivityExpanded ? 'max-h-[2000px] opacity-100 border-t border-neutral-200' : 'max-h-0 opacity-0 overflow-hidden'
+                                }`}
+                              >
+                                <div className="p-6">
+                                  <div className="text-neutral-600 text-base leading-relaxed">
+                                    {activity.description.split('\n').map((paragraph, idx) => (
+                                      paragraph.trim() ? <p key={idx} className="mb-3 last:mb-0">{paragraph}</p> : null
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })()}
+                          );
+                        })}
+                      </div>
+                      
+                      {/* Contact Card for the Location */}
+                      {(() => {
+                        // Collect unique contact lines for the location
+                        const contactLines = new Set<string>();
+                        locActivities.forEach(act => {
+                          if (act.contact) {
+                            act.contact.split('\n').forEach(line => {
+                              if (line.trim()) contactLines.add(line.trim());
+                            });
+                          }
+                        });
+                        const uniqueContacts = Array.from(contactLines);
+
+                        if (uniqueContacts.length > 0) {
+                          return (
+                            <div className="mt-8 bg-orange-50 border border-orange-100 rounded-xl p-6 shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
+                              <div className="bg-white p-3 rounded-full shadow-sm">
+                                <MapPin className="w-6 h-6 text-[var(--color-tertiary)]" />
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-bold text-[var(--color-primary)] mb-2">Contacto / Información de {location}</h4>
+                                <div className="text-sm text-neutral-700 leading-relaxed space-y-1">
+                                  {uniqueContacts.map((contact, idx) => (
+                                    <p key={idx}>{contact}</p>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        }
+                        return null;
+                      })()}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </section>
-          ))}
+              </section>
+            );
+          })}
         </div>
       ) : (
         <div className="text-center py-16 bg-white rounded-xl border border-neutral-200 shadow-sm max-w-lg mx-auto">
