@@ -32,6 +32,7 @@ export default defineConfig({
         ]
       },
       workbox: {
+        navigateFallback: '/index.html',
         navigateFallbackDenylist: [/\.pdf$/],
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,pdf,webm,mp4}'],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB limit for large videos/pdfs
